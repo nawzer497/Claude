@@ -1290,3 +1290,16 @@ p { text-wrap: pretty; }
   font-family: var(--font-display); font-weight: 600; font-size: 1.05rem;
   color: var(--gold-light);
 }
+
+/* Staff way in. Deliberately quiet — it's for the restaurant, not diners —
+   and app.js only unhides it when a server is actually there to sign in to. */
+.admin-link {
+  margin-left: .9rem;
+  padding-left: .9rem;
+  border-left: 1px solid rgba(253,250,244,.2);
+  opacity: .55;
+  text-decoration: none;
+  transition: opacity .16s var(--ease), color .16s var(--ease);
+}
+.admin-link:hover { opacity: 1; color: var(--gold-light); }
+.admin-link[hidden] { display: none; }

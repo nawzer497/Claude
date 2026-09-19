@@ -491,6 +491,19 @@
       if (nlFallback) nlFallback.hidden = true;
     }
 
+    /* Show the staff link only where there's an admin to reach. On a static
+       host (or the file:// preview) there's no API, so it stays hidden rather
+       than becoming a dead link. The path is relative on purpose: root-relative
+       would probe whatever host the page is embedded under. */
+    fetch("api/session", { credentials: "same-origin" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (s) {
+        if (s && typeof s.configured === "boolean") {
+          $$("[data-admin-link]").forEach(function (a) { a.hidden = false; });
+        }
+      })
+      .catch(function () { /* no server — leave it hidden */ });
+
     var year = $("[data-year]");
     if (year) year.textContent = new Date().getFullYear();
   }
