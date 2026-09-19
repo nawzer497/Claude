@@ -517,7 +517,7 @@
 
     list.reduce(function (chain, file) {
       return chain.then(function () {
-        return api("/api/media", {
+        return api("api/media", {
           method: "POST",
           headers: { "Content-Type": file.type, "X-Filename": file.name },
           body: file,
@@ -533,7 +533,7 @@
   }
 
   function loadLibrary() {
-    return api("/api/media").then(function (r) {
+    return api("api/media").then(function (r) {
       var host = $("#library");
       if (!host) return r.files;
       host.innerHTML = r.files.length ? r.files.map(mediaTile).join("")
@@ -591,7 +591,7 @@
     $("#save").disabled = true;
 
     Promise.all(changed.map(function (d) {
-      return api("/api/content/" + d, {
+      return api("api/content/" + d, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(draft[d]),
@@ -609,7 +609,7 @@
   /* ----------------------------------------------------------------- boot */
   function loadAll() {
     return Promise.all(DOCS.map(function (d) {
-      return api("/api/content/" + d).then(function (j) { data[d] = j; });
+      return api("api/content/" + d).then(function (j) { data[d] = j; });
     })).then(function () {
       draft = {};
       DOCS.forEach(function (d) { draft[d] = clone(data[d]); });
@@ -627,16 +627,27 @@
     });
   }
 
-  function showLogin(message) {
+  function showLogin(message, fatal) {
     $("#admin-view").hidden = true;
     $("#login-view").hidden = false;
-    if (message) { $("#login-error").hidden = false; $("#login-error").textContent = message; }
+    if (message) {
+      var box = $("#login-error");
+      box.hidden = false;
+      box.innerHTML = message;
+      box.className = fatal ? "banner banner--warn" : "banner banner--err";
+    }
+    /* With no server there is nothing to sign in to, so don't offer a form
+       that can only fail. */
+    if (fatal) {
+      $("#login-password").hidden = true;
+      $("#login-form button[type=submit]").hidden = true;
+    }
   }
 
   $("#login-form").addEventListener("submit", function (e) {
     e.preventDefault();
     $("#login-error").hidden = true;
-    api("/api/login", {
+    api("api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ password: $("#login-password").value }),
@@ -650,7 +661,7 @@
 
   $("#logout").addEventListener("click", function () {
     if (dirty && !confirm("You have unsaved changes. Sign out anyway?")) return;
-    api("/api/logout", { method: "POST" }).then(function () { location.reload(); });
+    api("api/logout", { method: "POST" }).then(function () { location.reload(); });
   });
 
   $("#save").addEventListener("click", save);
@@ -670,7 +681,7 @@
   document.addEventListener("click", function (e) {
     if (!e.target.closest("#pw-save")) return;
     var msg = $("#pw-msg");
-    api("/api/password", {
+    api("api/password", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ current: $("#pw-current").value, next: $("#pw-next").value }),
@@ -688,10 +699,20 @@
     if (dirty) { e.preventDefault(); e.returnValue = ""; }
   });
 
-  api("/api/session").then(function (s) {
-    if (s.authenticated) showAdmin();
-    else showLogin(s.configured ? "" : "No admin password is set yet. On the server run:  node server.js --set-password 'your-password'");
+  api("api/session").then(function (s) {
+    if (s.authenticated) return showAdmin();
+    if (s.configured) return showLogin("");
+    showLogin("No admin password is set yet. On the server, run:" +
+      '<br><code style="display:inline-block;margin-top:.5rem">' +
+      "node server.js --set-password 'your-password'</code>", true);
   }).catch(function () {
-    showLogin("Can't reach the server. Start it with:  node server.js");
+    /* Served as plain files — a static host, a preview link, or opened from
+       disk. Say so plainly rather than showing a box that can't work. */
+    showLogin("<strong>This is a preview — the admin isn\u2019t running.</strong>" +
+      "<br><br>Editing needs the server, which isn\u2019t part of a static copy " +
+      "of the site. To use it, run this where the files are:" +
+      '<br><code style="display:inline-block;margin:.5rem 0">node server.js</code>' +
+      '<br>then open <code>localhost:3000/admin.html</code>.' +
+      '<br><br><a href="index.html" style="text-decoration:underline">Back to the site</a>', true);
   });
 })();
