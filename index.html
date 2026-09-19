@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Madras Diaries — South Indian &amp; Indo-Chinese on Kingsway, Vancouver</title>
-<meta name="description" content="Dosai off the iron, Dindigul biryani and wok-charred Indo-Chinese on Kingsway — open late every night. Daily deals, full menu and direct ordering.">
-<meta name="theme-color" content="#17110D">
+<title>The Madras Diaries — India’s Grill Kitchen, Kingsway Vancouver</title>
+<meta name="description" content="Rotisserie grill, Dindigul biryani, 17 dosai and Chettinad curries on Kingsway. Halal. Open 11:30am–midnight every day. Daily deals and full menu.">
+<meta name="theme-color" content="#23292F">
 <link rel="canonical" href="https://themadrasdiaries.ca/">
 <link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
 
 <meta property="og:type" content="restaurant">
 <meta property="og:title" content="The Madras Diaries — Vancouver">
-<meta property="og:description" content="Dosai off the iron, Dindigul biryani and wok-charred Indo-Chinese on Kingsway. Open late, every night.">
+<meta property="og:description" content="India’s Grill Kitchen on Kingsway. Rotisserie grill, Dindigul biryani, Chettinad curries. Halal.">
 <meta property="og:url" content="https://themadrasdiaries.ca/">
 <meta property="og:image" content="https://themadrasdiaries.ca/assets/img/hero-poster.svg">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,20 +29,20 @@
 <header class="site-header" data-mode="over">
   <div class="wrap">
     <a class="brand" href="index.html">
-      <img src="assets/img/mark.svg" width="34" height="34" alt="">
-      <span>The Madras Diaries<small>Kingsway · Vancouver</small></span>
+      <img src="assets/img/mark-line.svg" width="30" height="34" alt="" class="brand__mark">
+      <span>The Madras Diaries<small>India’s Grill Kitchen</small></span>
     </a>
 
     <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="#story">About Us</a>
       <a href="menu.html">Menu</a>
       <a href="#deals">Deals</a>
-      <a href="#story">Our Story</a>
       <a href="#visit">Visit</a>
-      <a class="btn btn--primary btn--sm" href="#order">Order Online</a>
+      <a class="btn btn--primary btn--sm" data-reserve href="#">Reservation</a>
     </nav>
 
     <div class="header-actions">
-      <a class="btn btn--gold btn--sm" href="#order">Order Online</a>
+      <a class="btn btn--gold btn--sm" data-reserve href="#">Reservation</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
         <span></span><span class="visually-hidden">Menu</span>
       </button>
@@ -59,18 +59,23 @@
     <button class="video-ctl" type="button" data-video-toggle hidden aria-label="Pause background video"></button>
 
     <div class="wrap hero__inner">
-      <span class="status" data-status data-state="closed"></span>
+      <div class="hero__meta">
+        <span class="status" data-status data-state="closed"></span>
+        <span class="halal" data-halal hidden>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0l2 1.6 2.5-.4.8 2.4 2.2 1.3-1 2.3 1 2.3-2.2 1.3-.8 2.4-2.5-.4L8 16l-2-1.6-2.5.4-.8-2.4L.5 11l1-2.3-1-2.3 2.2-1.3.8-2.4 2.5.4z" opacity=".22"/><path d="M6.6 10.9 4 8.3l1.1-1.1 1.5 1.5 4.3-4.3L12 5.5z"/></svg>
+          100% Halal
+        </span>
+      </div>
 
-      <h1>Madras, <em>still hot</em> at midnight.</h1>
+      <h1 class="hero__title">Experience <em>Contemporary</em> Madras Style</h1>
 
       <p class="hero__lede">
-        Batter ground in-house and rested overnight. Seeraga samba sealed under dum.
-        A wok that never really cools down. Kingsway's South Indian kitchen — open long
-        after the rest of the street has shut.
+        We serve food, harmony, &amp; laughter. Rotisserie grill, seeraga samba biryani
+        and stone-ground Chettinad masala — on Kingsway, every day until midnight.
       </p>
 
       <div class="hero__cta">
-        <a class="btn btn--gold" href="#order">Order Online</a>
+        <a class="btn btn--gold" data-reserve href="#">Table Reservation</a>
         <a class="btn btn--ghost-light" href="menu.html">View the Menu</a>
         <a class="btn btn--ghost-light" data-tel href="#">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 1.5a1.4 1.4 0 0 1 1.9.3l1.2 1.6a1.4 1.4 0 0 1-.1 1.8l-.7.7a8.6 8.6 0 0 0 3.5 3.5l.7-.7a1.4 1.4 0 0 1 1.8-.1l1.6 1.2a1.4 1.4 0 0 1 .3 1.9l-.8 1.1a1.9 1.9 0 0 1-2.1.7C8.1 12.6 3.4 7.9 2.1 3.4a1.9 1.9 0 0 1 .7-2.1z"/></svg>
@@ -111,47 +116,47 @@
           <span class="eyebrow">What people order</span>
           <h2>Four things worth the trip</h2>
         </div>
-        <a class="link-arrow" href="menu.html">See all 47 dishes</a>
+        <a class="link-arrow" href="menu.html">See all 112 dishes</a>
       </div>
 
       <div class="signatures" data-reveal>
-        <a class="sig" href="menu.html?q=pondicherry">
-          <div class="sig__bg"><img src="assets/img/sig-dosa.svg" alt=""></div>
-          <span class="badge">Chef's pick</span>
+        <a class="sig" href="menu.html?q=signature%20grill">
+          <div class="sig__bg"><img src="assets/img/sig-grill.svg" alt=""></div>
+          <span class="badge">The house bird</span>
           <div class="sig__body">
-            <h3>Pondicherry Mutton Dosa</h3>
-            <p>Slow-cooked mutton kothu pressed into the dosa as it crisps on the iron.</p>
+            <h3>Signature Grill Chicken</h3>
+            <p>Marinated skin-on in our secret blend of Southern Indian spice, grilled in the rotisserie oven. Signature, Andhra or Madurai Malli spicy.</p>
+            <span class="sig__price">$19 half &middot; $31 whole</span>
+          </div>
+        </a>
+
+        <a class="sig" href="menu.html?q=thambi%20vilas">
+          <div class="sig__bg"><img src="assets/img/sig-biryani.svg" alt=""></div>
+          <span class="badge">Dindigul style</span>
+          <div class="sig__body">
+            <h3>Thambi Vilas Biriyani</h3>
+            <p>Seeraga samba premium rice, sealed and cooked the way Dindigul does it. Chicken or mutton.</p>
+            <span class="sig__price">$17 &ndash; $18</span>
+          </div>
+        </a>
+
+        <a class="sig" href="menu.html?q=parotta">
+          <div class="sig__bg"><img src="assets/img/sig-parotta.svg" alt=""></div>
+          <span class="badge">Classic street food</span>
+          <div class="sig__body">
+            <h3>Thooku Chatti Parotta</h3>
+            <p>Curried layered parotta wrapped with banana leaf and tawa steamed. Lamb or chicken.</p>
             <span class="sig__price">$18</span>
           </div>
         </a>
 
-        <a class="sig" href="menu.html?q=biryani">
-          <div class="sig__bg"><img src="assets/img/sig-biryani.svg" alt=""></div>
-          <span class="badge">Guest favourite</span>
+        <a class="sig" href="menu.html?q=nandu">
+          <div class="sig__bg"><img src="assets/img/sig-crab.svg" alt=""></div>
+          <span class="badge">Chef&rsquo;s pick</span>
           <div class="sig__body">
-            <h3>Thambi Vilas Lamb Biryani</h3>
-            <p>Dindigul style — short-grain seeraga samba, tender lamb, a hard dum seal.</p>
-            <span class="sig__price">$23</span>
-          </div>
-        </a>
-
-        <a class="sig" href="menu.html?q=gobi">
-          <div class="sig__bg"><img src="assets/img/sig-gobi.svg" alt=""></div>
-          <span class="badge">Indo-Chinese</span>
-          <div class="sig__body">
-            <h3>Gobi Manchurian</h3>
-            <p>Cauliflower fried hard, then tossed in a sticky chilli-garlic glaze.</p>
-            <span class="sig__price">$15</span>
-          </div>
-        </a>
-
-        <a class="sig" href="menu.html?q=idli">
-          <div class="sig__bg"><img src="assets/img/sig-tiffin.svg" alt=""></div>
-          <span class="badge">All day</span>
-          <div class="sig__body">
-            <h3>Thattu Idli, Rameswaram Style</h3>
-            <p>Flat, feather-light idli soaked in sambar and dusted with podi.</p>
-            <span class="sig__price">$12.49</span>
+            <h3>Nandu Pepper Fry</h3>
+            <p>Crab pieces marinated and saut&eacute;ed with a generous amount of black pepper.</p>
+            <span class="sig__price">$25</span>
           </div>
         </a>
       </div>
@@ -164,32 +169,35 @@
       <div class="story">
         <figure class="story__art" data-reveal>
           <img src="assets/img/story-leaf.svg" alt="A banana leaf laid out with rice, chutneys and sambar">
-          <figcaption>Every meal still finishes with curd rice. Some things don't get modernised.</figcaption>
+          <figcaption>All curries are served with premium quality rice.</figcaption>
         </figure>
 
         <div data-reveal>
-          <span class="eyebrow">Our story</span>
-          <h2>We brought the whole street with us.</h2>
+          <span class="eyebrow">Fusion of spices at its best</span>
+          <h2>A culinary odyssey from Madras to your table.</h2>
           <p class="lede">
-            Madras doesn't eat in one register. There's the tiffin room at 7am, the Chettiar
-            kitchen with its stone-ground masala, the Indo-Chinese cart behind the cinema, and
-            the biryani shop that only really wakes up after ten.
+            Madras Diaries is purposefully crafted to guide diners on an immersive sensory
+            exploration. From the fiery warmth of red chillies to the earthy aroma of cumin,
+            each spice is carefully selected and expertly blended to create a symphony of
+            flavours that dance on your palate.
           </p>
           <p>
-            We didn't want to pick one. So the menu on Kingsway runs the whole way across —
-            idli and podi in the morning register, lamb chettinadu and Dindigul biryani in the
-            middle, gobi manchurian and kothu parotta when the night gets loud. Same batter,
-            ground here, rested overnight. Same iron, never touched with soap.
+            The team possesses a deep understanding of Indian cuisine and is dedicated to
+            using authentic raw materials and innovative kitchen equipment to create enticing
+            new dishes, all while preserving the aromatic spices and fresh ingredients that
+            define Chettinad cuisine.
           </p>
           <p>
-            And we stay open. Past midnight on weekdays, past two on Thursday, Friday and
-            Saturday — because that's when Madras actually gets hungry.
+            By prioritising quality, authenticity and customer satisfaction, The Madras Diaries
+            consistently delivers flavourful cuisine and memorable dining experiences. We value
+            your feedback — not only on our food, but on the whole evening: timing, ambiance
+            and enjoyment.
           </p>
 
           <div class="story__stats">
             <div><b data-site="rating">4.5</b><span>Average rating</span></div>
-            <div><b data-site="reviewCount">700+</b><span>Guest reviews</span></div>
-            <div><b>2 AM</b><span>Weekend close</span></div>
+            <div><b>112</b><span>Dishes on the menu</span></div>
+            <div><b>100%</b><span>Halal kitchen</span></div>
           </div>
         </div>
       </div>
@@ -282,7 +290,7 @@
           <p class="hours-note" data-site="hoursNote"></p>
 
           <p style="margin-top:2rem">
-            <a class="btn btn--ghost" data-reserve href="#">Book a table</a>
+            <a class="btn btn--ghost" data-reserve data-reserve-text href="#">Book a table</a>
           </p>
         </div>
       </div>
@@ -296,9 +304,13 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <span class="brand">The Madras Diaries</span>
-        <p style="max-width:38ch">South Indian and Indo-Chinese cooking on Kingsway, served
-          the way Madras serves it — generously, and late.</p>
+        <img class="footer-logo" src="assets/img/logo.svg" width="168" height="122" alt="The Madras Diaries — India’s Grill Kitchen">
+        <p style="max-width:34ch;margin-top:1rem">South Indian grill kitchen on Kingsway.
+          We serve food, harmony, &amp; laughter.</p>
+        <p class="halal halal--footer" data-halal hidden>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.6 10.9 4 8.3l1.1-1.1 1.5 1.5 4.3-4.3L12 5.5z"/></svg>
+          100% Halal
+        </p>
         <div class="socials">
           <a data-site="social.instagram" href="#" aria-label="Instagram" target="_blank" rel="noopener">
             <svg width="17" height="17" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.4c2.1 0 2.4 0 3.2.05.8.04 1.2.17 1.5.28.4.15.6.33.9.63.3.3.48.5.63.9.11.3.24.7.28 1.5.04.8.05 1.1.05 3.2s0 2.4-.05 3.2c-.04.8-.17 1.2-.28 1.5a2.5 2.5 0 0 1-.63.9c-.3.3-.5.48-.9.63-.3.11-.7.24-1.5.28-.8.04-1.1.05-3.2.05s-2.4 0-3.2-.05c-.8-.04-1.2-.17-1.5-.28a2.5 2.5 0 0 1-.9-.63 2.5 2.5 0 0 1-.63-.9c-.11-.3-.24-.7-.28-1.5C1.4 10.4 1.4 10.1 1.4 8s0-2.4.05-3.2c.04-.8.17-1.2.28-1.5.15-.4.33-.6.63-.9.3-.3.5-.48.9-.63.3-.11.7-.24 1.5-.28C5.6 1.4 5.9 1.4 8 1.4zM8 4.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8zm0 5.6a2.2 2.2 0 1 1 0-4.4 2.2 2.2 0 0 1 0 4.4zm4.3-5.7a.8.8 0 1 1-1.6 0 .8.8 0 0 1 1.6 0z"/></svg>
@@ -310,12 +322,31 @@
       </div>
 
       <div>
-        <h4>Visit</h4>
+        <h4>Newsletter</h4>
+        <p style="margin-bottom:1rem">Interested in hearing the latest and greatest offers
+          from The Madras Diaries?</p>
+        <form class="newsletter" data-newsletter hidden>
+          <label class="visually-hidden" for="nl-email">Email address</label>
+          <input id="nl-email" type="email" name="EMAIL" required placeholder="you@example.com">
+          <button class="btn btn--gold btn--sm" type="submit">Sign up</button>
+        </form>
+        <p data-newsletter-fallback>
+          <a class="link-arrow" data-site="email" href="#">Email us to join the list</a>
+        </p>
+      </div>
+
+      <div>
+        <h4>Hours</h4>
+        <ul>
+          <li><span class="status status--footer" data-status data-state="closed"></span></li>
+          <li>Seating from 11:30 AM &ndash; 12:00 AM</li>
+          <li>All days</li>
+        </ul>
+        <h4 style="margin-top:1.75rem">Our address</h4>
         <ul>
           <li><a data-site="mapsUrl" href="#" target="_blank" rel="noopener">1097 Kingsway, Vancouver</a></li>
-          <li><a data-tel data-tel-text href="#">(604) 707-8177</a></li>
-          <li><a href="#" data-site="email">hello@themadrasdiaries.ca</a></li>
-          <li><a href="#visit">Hours</a></li>
+          <li><a data-tel data-tel-text href="#">604.707.8177</a></li>
+          <li><a href="#" data-site="email">info@themadrasdiaries.ca</a></li>
         </ul>
       </div>
 
@@ -324,24 +355,24 @@
         <ul>
           <li><a href="menu.html">Full menu</a></li>
           <li><a href="#deals">Daily deals</a></li>
-          <li><a href="#story">Our story</a></li>
-          <li><a href="#order">Order online</a></li>
+          <li><a href="#story">About us</a></li>
+          <li><a href="#visit">Visit &amp; hours</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
       <span>&copy; <span data-year>2026</span> The Madras Diaries. All rights reserved.</span>
-      <span>Made on Kingsway.</span>
+      <span>1097 Kingsway, Vancouver &middot; Halal kitchen</span>
     </div>
   </div>
 </footer>
 
 <!-- ─────────────────────────────────── mobile action bar ── -->
 <nav class="action-bar" aria-label="Quick actions">
-  <a class="is-primary" href="#order">
+  <a class="is-primary" data-reserve href="#">
     <svg width="19" height="19" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 3h1.3l.4 1.8h9.6a.6.6 0 0 1 .6.75l-1 4A.9.9 0 0 1 12 10H5.4l.2 1h7v1.2h-7a1.2 1.2 0 0 1-1.2-1L2.7 4.2H2z"/><circle cx="5.8" cy="14" r="1.1"/><circle cx="11.8" cy="14" r="1.1"/></svg>
-    Order
+    Book
   </a>
   <a href="menu.html">
     <svg width="19" height="19" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3 1.5h10a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5zM5 4.5h6v1.2H5zm0 3h6v1.2H5zm0 3h4v1.2H5z"/></svg>
@@ -368,9 +399,12 @@
   "name": "The Madras Diaries",
   "url": "https://themadrasdiaries.ca/",
   "image": "https://themadrasdiaries.ca/assets/img/hero-poster.svg",
+  "slogan": "India\u2019s Grill Kitchen",
   "telephone": "+1-604-707-8177",
+  "email": "info@themadrasdiaries.ca",
   "priceRange": "$$",
-  "servesCuisine": ["South Indian", "Indian", "Indo-Chinese"],
+  "servesCuisine": ["South Indian", "Indian", "Chettinad", "Indo-Chinese"],
+  "acceptsReservations": true,
   "hasMenu": "https://themadrasdiaries.ca/menu.html",
   "address": {
     "@type": "PostalAddress",
@@ -386,10 +420,9 @@
     "reviewCount": "707"
   },
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday"], "opens": "11:30", "closes": "00:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday","Friday"], "opens": "11:30", "closes": "02:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "12:00", "closes": "02:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "00:00" }
+    { "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "11:30", "closes": "00:00" }
   ]
 }
 </script>

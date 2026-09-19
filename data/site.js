@@ -2,19 +2,20 @@
    SITE SETTINGS — The Madras Diaries
    --------------------------------------------------------------------------
    Edit this file to change contact info, hours and ordering links.
-   No build step, no coding knowledge needed: change the text between the
-   quotes, save, upload. Keep the commas and quotes exactly where they are.
+   Change the text between the quotes, save, upload. Keep the commas and
+   quotes exactly where they are.
    ========================================================================== */
 
 window.SITE = {
 
-  name: "The Madras Diaries",
-  tagline: "Madras on a banana leaf, served till late on Kingsway.",
+  name:      "The Madras Diaries",
+  strapline: "India's Grill Kitchen",
+  tagline:   "We Serve Food, Harmony, & Laughter",
 
   /* ---- Contact ---------------------------------------------------------- */
-  phone:        "(604) 707-8177",
+  phone:        "604.707.8177",
   phoneDial:    "+16047078177",          // used by the "Call" button
-  email:        "hello@themadrasdiaries.ca",
+  email:        "info@themadrasdiaries.ca",
   address:      "1097 Kingsway",
   addressLine2: "Vancouver, BC V5V 3C7",
   mapsUrl:      "https://www.google.com/maps/search/?api=1&query=1097+Kingsway+Vancouver+BC",
@@ -28,36 +29,46 @@ window.SITE = {
   /* ---- Ordering partners ------------------------------------------------
      Set a link to "" (empty) to hide that button everywhere on the site.  */
   ordering: {
-    direct:   { label: "Order Direct",  url: "https://themadrasdiaries.ca/order", note: "Best price — no commission" },
+    direct:   { label: "Order Direct",  url: "", note: "Best price — no commission" },
     uberEats: { label: "Uber Eats",     url: "" },
     doordash: { label: "DoorDash",      url: "https://www.doordash.com/store/the-madras-diaries-vancouver-28955122/" },
     skip:     { label: "SkipTheDishes", url: "" },
   },
 
-  reservationUrl: "",   // e.g. an OpenTable/Resy link. Empty = show "Call to book" instead.
+  /* Your live site has a Reservation button but no booking system behind it.
+     Add an OpenTable/Resy/Tock link here and every "Book a table" button
+     uses it. Left empty, they fall back to "Call to book".               */
+  reservationUrl: "",
+
+  /* Newsletter — your footer has a Sign up link. Paste the form action URL
+     from Mailchimp / Klaviyo / Square here to make it work. Empty hides it. */
+  newsletterUrl: "",
+
+  /* ---- Kitchen ---------------------------------------------------------- */
+  halal: true,                            // shows the Halal badge
 
   /* ---- Social proof (update after checking your listings) ---------------- */
   rating:      "4.5",
   reviewCount: "707",
 
   /* ---- Opening hours ----------------------------------------------------
+     From your take-out menu: 11:30 AM – 12:00 AM, all days.
      24-hour clock. For a closing time AFTER midnight, keep counting up:
-       2:00 AM  ->  "26:00"
-       1:00 AM  ->  "25:00"
+       12:00 AM -> "24:00"    1:00 AM -> "25:00"    2:00 AM -> "26:00"
      Set a day to null to show it as Closed, e.g.  mon: null,
-     The "Open now / Closed" badge on the site is calculated from this.     */
+     The "Open now / Closed" badge is calculated from this.               */
   hours: {
-    sun: { open: "12:00", close: "24:00" },
+    sun: { open: "11:30", close: "24:00" },
     mon: { open: "11:30", close: "24:00" },
     tue: { open: "11:30", close: "24:00" },
     wed: { open: "11:30", close: "24:00" },
-    thu: { open: "11:30", close: "26:00" },
-    fri: { open: "11:30", close: "26:00" },
-    sat: { open: "12:00", close: "26:00" },
+    thu: { open: "11:30", close: "24:00" },
+    fri: { open: "11:30", close: "24:00" },
+    sat: { open: "11:30", close: "24:00" },
   },
 
   /* Shown under the hours table. Good spot for holiday notices. */
-  hoursNote: "Kitchen takes last orders 30 minutes before close.",
+  hoursNote: "Open all days. Kitchen takes last orders 30 minutes before close.",
 
   /* ---- Hero video -------------------------------------------------------
      Drop your video at the path below and it plays automatically, muted and

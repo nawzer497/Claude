@@ -1,190 +1,389 @@
 /* ==========================================================================
    MENU — The Madras Diaries
    --------------------------------------------------------------------------
-   HOW TO EDIT
-     • Each item needs a "name" and "price". Everything else is optional.
-     • "tags" drive the filter buttons on the menu page. Valid tags:
-           "veg"      vegetarian
-           "vegan"    fully plant-based
-           "gf"       gluten-free
-           "nuts"     contains nuts
-           "popular"  shows a "Guest favourite" badge
-           "chef"     shows a "Chef's pick" badge
-           "new"      shows a "New" badge
-     • "heat" is 0–3 chillies. Leave it out for anything not spicy.
-     • Set  hidden: true  to pull an item off the site without deleting it
-       (useful when something is out of season).
+   Transcribed from the official take-out menu PDF (2 pages) and the live
+   site's menu section. Names, prices and descriptions are AS PRINTED, with
+   obvious typos corrected (Promfret -> Pomfret, amont -> amount,
+   indan -> Indian, Panner -> Paneer, chilly -> chilli, Baltered -> Battered).
 
-   PRICE CHECK
-     Items flagged  checked: true  were cross-referenced against the public
-     DoorDash / listing prices in Sept 2026. Everything else is carried over
-     at an estimated price and should be confirmed against the till before
-     this site goes live. See README.md.
+   HOW TO EDIT
+     • "price" is the number used for sorting and for search engines.
+     • "priceText" overrides what's shown, for split prices ("19 / 31").
+     • "note" is the small grey line under a dish (variants, what's included).
+     • "tags" drive the filter buttons. Valid tags:
+           "veg" "vegan" "gf" "nuts" "popular" "chef" "new"
+     • "heat" is 0-3 chillies — EDITORIAL, set from the dish description.
+       Correct any that misrepresent how you actually cook it.
+     • Set  hidden: true  to pull an item off the site without deleting it.
    ========================================================================== */
 
 window.MENU = [
 
-  /* ---------------------------------------------------------------- DOSAI */
+  /* ------------------------------------------------------ SIGNATURE DISHES */
   {
-    id: "dosai",
-    name: "Dosai",
+    id: "signature",
+    name: "Signature Dishes",
+    tamil: "சிறப்பு உணவுகள்",
+    blurb: "The eight plates the kitchen is known for — the rotisserie bird, the street-food parottas, and the crab.",
+    items: [
+      { name: "Signature Grill Chicken", price: 19, priceText: "19 / 31",
+        note: "Half / Whole · Signature Spicy | Andhra Spicy | Madurai Malli Spicy",
+        tags: ["gf", "chef", "popular"], heat: 2,
+        desc: "Marinated whole chicken, skin on, in our secret blend of Southern Indian spice, grilled to perfection in our rotisserie oven." },
+      { name: "Lappa Parotta", price: 19, note: "Lamb or Chicken", tags: ["chef"], heat: 2,
+        desc: "Classic street food — tender pieces of chicken or lamb cooked with aromatic spices and wrapped in a deliciously flaky parotta." },
+      { name: "Thooku Chatti Parotta", price: 18, note: "Lamb or Chicken", tags: ["chef", "popular"], heat: 2,
+        desc: "Classic street food — curried layered parotta wrapped with banana leaf and tawa steamed." },
+      { name: "Thambi Vilas Biriyani", price: 17, priceText: "17 / 18", note: "Chicken / Mutton",
+        tags: ["chef", "popular"], heat: 2,
+        desc: "Seeraga samba premium rice cooked in a Dindigul style." },
+      { name: "Mandhi Biriyani", price: 17, priceText: "17 / 18", note: "Chicken / Lamb", tags: ["chef"], heat: 2,
+        desc: "Kongu style grill meat and flavourful rice." },
+      { name: "Madurai Kari Chukka Dosa", price: 14, tags: ["chef"], heat: 2,
+        desc: "Madurai-style spiced meat preparation, folded into a crisp dosa." },
+      { name: "Pomfret Fry", price: 21, tags: ["gf", "chef"], heat: 2,
+        desc: "Whole pomfret marinated in spices and crispy fried." },
+      { name: "Nandu Pepper Fry", price: 25, tags: ["gf", "chef", "popular"], heat: 3,
+        desc: "Crab pieces marinated and sautéed with a generous amount of black pepper." },
+    ],
+  },
+
+  /* ----------------------------------------------------------- APPETIZERS */
+  {
+    id: "appetizers",
+    name: "Appetizers",
+    tamil: "தொடக்கம்",
+    blurb: "Tiffin, street snacks and the fried things Madras eats standing up.",
+    items: [
+      { name: "Idly", price: 8, tags: ["veg", "vegan"],
+        desc: "Steamed rice cake served with chutney and sambar." },
+      { name: "Idly with Kumbakonam Kadappa", price: 10, tags: ["veg"],
+        desc: "Idly served with lentil and potato spiced curry." },
+      { name: "Medu Vada", price: 7, tags: ["veg", "vegan"],
+        desc: "Golden fried savoury lentil donut served with chutney and sambar." },
+      { name: "Thattu Idly", price: 10, note: "Rameswaram style", tags: ["veg", "popular"],
+        desc: "Flattened rice cakes cooked until crispy and served with kadappa and chutneys." },
+      { name: "Cut Mirchi", price: 8, tags: ["veg", "nuts"], heat: 3,
+        desc: "Battered spicy hot peppers stuffed with peanut masala." },
+      { name: "Egg Bonda", price: 8, note: "Andhra style", heat: 2,
+        desc: "Battered boiled egg with spicy onion stuffing." },
+      { name: "Egg Puff", price: 8, note: "2 pieces",
+        desc: "Stuffed egg baked with puffed pastry roll." },
+      { name: "Mutton Puffs", price: 9, heat: 1,
+        desc: "Spicy lamb stuffed and baked with puff pastry rolls." },
+      { name: "Chicken 65", price: 13, tags: ["gf", "popular"], heat: 3,
+        desc: "Chicken cubes flavoured with exotic south Indian spices and deep fried — a classic South Indian dish." },
+      { name: "Nethili Meen Varuval", price: 13, tags: ["gf"], heat: 2,
+        desc: "Speciality of Chettinadu anchovies." },
+      { name: "Roadside Kalan", price: 11, tags: ["veg"], heat: 2,
+        desc: "Shredded cabbage and diced mushroom bound and fried, cooked in Indo-Chinese sauce." },
+      { name: "Kola Urundai", price: 13, heat: 2,
+        desc: "Deep-fried ground lamb meat with a mix of spices." },
+      { name: "Gobi Manchurian", price: 13, tags: ["veg", "popular"], heat: 2,
+        desc: "Fried cauliflower sautéed with chilli, garlic, ginger and soy sauce." },
+      { name: "Theatre Samosa", price: 7, tags: ["veg"], heat: 1,
+        desc: "Pastry filled with spiced onions." },
+      { name: "Pakora", price: 8, tags: ["veg", "vegan"], heat: 1,
+        desc: "Deep fried battered onions." },
+    ],
+  },
+
+  /* ----------------------------------------------------------------- DOSA */
+  {
+    id: "dosa",
+    name: "Dosa",
     tamil: "தோசை",
-    blurb: "Batter ground in-house and rested overnight, poured on iron that has never seen soap. The reason most people find us.",
+    blurb: "Thin crispy crepes of rice and lentils, off the iron to order. Seventeen ways.",
     items: [
-      { name: "Madras Masala Dosa", price: 14.00, checked: true, tags: ["veg", "popular"], heat: 1,
-        desc: "Crisp golden crepe folded over spiced potato, with sambar and a duo of chutneys." },
-      { name: "Mysore Masala Dosa", price: 15.49, checked: true, tags: ["veg"], heat: 2,
-        desc: "Smeared inside with fiery red garlic chutney before the potato goes in." },
-      { name: "Ghee Roast Dosa", price: 15.00, tags: ["veg", "chef"],
-        desc: "Paper-thin, rolled tall, glossy with nutty ghee. Nothing to hide behind." },
-      { name: "Podi Dosa", price: 14.00, tags: ["veg"], heat: 2,
-        desc: "Dusted with gunpowder — roasted lentils, red chilli, sesame — and a slick of sesame oil." },
-      { name: "Onion Rava Dosa", price: 15.00, tags: ["veg"], heat: 1,
-        desc: "Lacy semolina dosa, shot through with onion, green chilli and curry leaf." },
-      { name: "Pondicherry Mutton Dosa", price: 18.00, tags: ["popular", "chef"], heat: 2,
-        desc: "Slow-cooked mutton kothu pressed into the dosa as it crisps. The dish guests come back for." },
-      { name: "Kal Dosa with Chicken Curry", price: 15.00, checked: true, heat: 2,
-        desc: "Thick, soft griddle dosa served with a bowl of country-style chicken curry." },
-      { name: "Pepper Chicken Kal Dosa", price: 17.00, checked: true, heat: 3,
-        desc: "Thick dosa topped with spicy chutney and black pepper chicken." },
-      { name: "Egg Dosa", price: 14.00, checked: true,
-        desc: "Fresh egg cracked and spread across the dosa on the iron." },
-      { name: "Vegetable Uthappam", price: 14.00, checked: true, tags: ["veg"], heat: 1,
-        desc: "Thick, pillowy dosa pressed with spicy chutney and vegetables." },
-      { name: "Plain Dosa", price: 11.00, tags: ["veg", "vegan"],
-        desc: "Just batter, heat and time. Sambar and chutneys alongside." },
+      { name: "Plain Dosa", price: 10, tags: ["veg", "vegan"],
+        desc: "Thin crispy crepe of rice and lentils." },
+      { name: "Masala Dosa", price: 11, tags: ["veg", "popular"],
+        desc: "Thin crispy crepe of rice and lentils stuffed with potatoes and onions." },
+      { name: "Madurai Malli Masala", price: 13, tags: ["veg"], heat: 2,
+        desc: "Thin crispy crepe of rice and lentil spread with sweetened coriander chutney and Chettinadu spices." },
+      { name: "Ghee Roast Masala", price: 13, tags: ["veg", "chef"],
+        desc: "Thin crispy crepe of rice and black gram dhal, indulged with ghee, with spiced potato masala." },
+      { name: "Onion Masala Dosa", price: 13, tags: ["veg"],
+        desc: "Crepe filled with a spiced potato and onion mixture." },
+      { name: "Mysore Masala Dosa", price: 13, tags: ["veg"], heat: 2,
+        desc: "Thin crispy crepe of rice and lentils with layers of hot spices, filled with spiced potato." },
+      { name: "Pondicherry Masala Dosa", price: 13, tags: ["veg"],
+        desc: "Thin, crispy crepe filled with a spiced potato mixture." },
+      { name: "Pondicherry Chicken Dosa", price: 14, heat: 2,
+        desc: "South Indian dosa with chicken, reflecting regional culinary creativity." },
+      { name: "Pondicherry Mutton Dosa", price: 15, tags: ["popular"], heat: 2,
+        desc: "Indian dosa with spiced mutton, reflecting regional culinary creativity." },
+      { name: "Paneer Masala Dosa", price: 13, tags: ["veg"],
+        desc: "Crepe stuffed with paneer masala." },
+      { name: "Vegetable Kari Dosa", price: 13, tags: ["veg"], heat: 2,
+        desc: "Thick dosa spread with spicy chutney and vegetable." },
+      { name: "Mutta Dosa", price: 13,
+        desc: "Dosa cooked with cracked fresh egg." },
+      { name: "Kozhi Milagu Dosa", price: 14, heat: 3,
+        desc: "Thick dosa topped with spicy chutney and pepper chicken." },
+      { name: "Madurai Kari Chukka Dosa", price: 14, tags: ["chef"], heat: 2,
+        desc: "Madurai-style spiced meat preparation." },
+      { name: "Kal Dosa Chicken Curry", price: 16, heat: 2,
+        desc: "Thick kal dosa served with flavourful chicken curry, showcasing regional culinary influences." },
+      { name: "Idiyappam with Mutton Paya", price: 17, note: "3 pieces", heat: 2,
+        desc: "Three pieces of idiyappam served with South Indian paya." },
     ],
   },
 
-  /* --------------------------------------------------------------- TIFFIN */
-  {
-    id: "tiffin",
-    name: "Tiffin",
-    tamil: "டிஃபன்",
-    blurb: "Steamed, soaked and fermented. The small plates a Madras morning is actually built on — served here until close.",
-    items: [
-      { name: "Thattu Idli (Rameswaram Style)", price: 12.49, checked: true, tags: ["veg", "vegan", "popular"],
-        desc: "Flat, feather-light idli soaked in sambar and dusted with podi." },
-      { name: "Idly with Sambar", price: 10.00, tags: ["veg", "vegan", "popular"],
-        desc: "Two steamed rice cakes, hot sambar, coconut and tomato chutney." },
-      { name: "Medu Vada", price: 9.00, tags: ["veg", "vegan"],
-        desc: "Urad dal doughnuts, crunched outside, cloud-soft in the middle." },
-      { name: "Sambar Vada", price: 11.00, tags: ["veg", "vegan"],
-        desc: "Medu vada drowned in sambar, with onion and coriander." },
-      { name: "Ven Pongal", price: 12.00, tags: ["veg"],
-        desc: "Rice and moong dal with cracked pepper, cumin, cashew and a lot of ghee." },
-      { name: "Theatre Samosa", price: 8.00, checked: true, tags: ["veg"], heat: 1,
-        desc: "The squat, over-stuffed samosa sold outside Madras cinemas at interval." },
-      { name: "Paneer Tikka", price: 16.00, tags: ["veg", "gf", "popular"], heat: 1,
-        desc: "Charred paneer, capsicum and onion off the skewer with mint chutney." },
-    ],
-  },
-
-  /* --------------------------------------------------------- INDO-CHINESE */
-  {
-    id: "indo-chinese",
-    name: "Indo-Chinese",
-    tamil: "இண்டோ-சைனீஸ்",
-    blurb: "The wok side of the kitchen. Loud, glossy, garlicky — Madras street Chinese, not takeout Chinese.",
-    items: [
-      { name: "Gobi Manchurian", price: 15.00, checked: true, tags: ["veg", "popular"], heat: 2,
-        desc: "Cauliflower fried hard, then tossed in a sticky chilli-garlic glaze." },
-      { name: "Chilli Chicken", price: 18.00, checked: true, tags: ["popular"], heat: 3,
-        desc: "Boneless chicken, capsicum, onion and a serious count of green chillies." },
-      { name: "Paneer 65", price: 16.00, tags: ["veg"], heat: 2,
-        desc: "Curry-leaf-crackled paneer in the Madras 65 marinade." },
-      { name: "Chicken Fried Rice", price: 19.00, checked: true, heat: 1,
-        desc: "High-heat wok rice with egg, spring onion and shredded chicken." },
-      { name: "Schezwan Chicken Fried Rice", price: 20.00, checked: true, heat: 3,
-        desc: "The same, turned up — house schezwan paste, extra garlic." },
-      { name: "Shrimp Fried Rice", price: 20.00, checked: true, heat: 1,
-        desc: "Wok-tossed with shrimp, egg and spring onion." },
-      { name: "Veg Hakka Noodles", price: 16.00, checked: false, tags: ["veg", "vegan"], heat: 1,
-        desc: "Hand-tossed noodles with julienned vegetables and dark soy." },
-    ],
-  },
-
-  /* ------------------------------------------------------- BIRYANI & RICE */
+  /* -------------------------------------------------------------- BIRYANI */
   {
     id: "biryani",
     name: "Biryani",
     tamil: "பிரியாணி",
-    blurb: "Seeraga samba rice, sealed pots, no shortcuts. Every biryani comes with onion raita and brinjal gravy.",
+    blurb: "Seeraga samba premium rice, Dindigul and Kongu styles. Mandhi biryani is Kongu-style grill meat with flavourful rice.",
     items: [
-      { name: "Thambi Vilas Lamb Biryani", price: 23.00, tags: ["chef", "popular"], heat: 2,
-        desc: "Dindigul style — tender lamb, short-grain seeraga samba, mint and a hard dum seal." },
-      { name: "Ambur Chicken Biryani", price: 20.00, heat: 2,
-        desc: "Ambur's soaked-chilli paste, bone-in chicken, rice that stays separate to the last grain." },
-      { name: "Ghee Roast Chicken Biryani", price: 21.00, heat: 2,
-        desc: "Chicken roasted in ghee and masala before it meets the rice." },
-      { name: "Vegetable Biryani", price: 18.00, tags: ["veg"], heat: 1,
-        desc: "Seasonal vegetables, whole spice and saffron, layered and sealed." },
-      { name: "Prawn Biryani", price: 24.00, heat: 2,
-        desc: "Coastal style, with a green masala that leans on coriander and coconut." },
-      { name: "Curd Rice", price: 10.00, tags: ["veg", "gf"],
-        desc: "Set curd, tempered mustard and curry leaf. The full stop to any Madras meal." },
+      { name: "Thambi Vilas Chicken Biryani", price: 17, tags: ["popular"], heat: 2,
+        desc: "Chicken and seeraga samba premium rice cooked in a Dindigul style." },
+      { name: "Thambi Vilas Mutton Biryani", price: 18, tags: ["chef", "popular"], heat: 2,
+        desc: "Mutton and seeraga samba premium rice cooked in a Dindigul style." },
+      { name: "Mandhi Chicken Biryani", price: 17, heat: 2,
+        desc: "Kongu style grill meat with flavourful rice." },
+      { name: "Mandhi Lamb Biryani", price: 18, heat: 2,
+        desc: "Kongu style grill meat with flavourful rice." },
+      { name: "Chicken 65 Biryani", price: 17, heat: 3,
+        desc: "Diced deep fried chicken cubes fused with flavoured rice." },
+      { name: "Vegetable Biryani", price: 15, tags: ["veg"], heat: 1,
+        desc: "Premium flavoured rice fused with vegetables." },
     ],
   },
 
-  /* ------------------------------------------------------ CURRIES & COAST */
+  /* ---------------------------------------------------------- VEG CURRIES */
   {
-    id: "curries",
-    name: "From the Coast",
-    tamil: "கறி",
-    blurb: "Chettinad and the Coromandel — where the spice list gets long and the coconut milk comes in late.",
+    id: "veg-curries",
+    name: "Veg Curries",
+    tamil: "காய்கறி கறி",
+    blurb: "All curries are served with premium quality rice.",
     items: [
-      { name: "Lamb Chettinadu", price: 20.00, checked: true, tags: ["gf", "chef"], heat: 3,
-        desc: "Stone-ground chettinad masala, star anise and stone flower, cooked down slow." },
-      { name: "Chettinadu Fish Curry", price: 21.00, tags: ["gf"], heat: 3,
-        desc: "Boneless fish in an old blend of spices finished with coconut milk." },
-      { name: "Chicken Curry", price: 18.00, tags: ["gf"], heat: 2,
-        desc: "The everyday country curry — shallots, tomato, gingelly oil." },
-      { name: "Lamb Vindaloo", price: 21.00, tags: ["gf"], heat: 3,
-        desc: "Goan-Portuguese heat and vinegar sharpness, slow-braised." },
-      { name: "Kadai Paneer", price: 18.00, tags: ["veg", "gf"], heat: 2,
-        desc: "Paneer and peppers in a coarse-ground kadai masala." },
-      { name: "Sambar & Rasam Bowl", price: 9.00, tags: ["veg", "vegan", "gf"], heat: 1,
-        desc: "A bowl of each, with steamed rice. Simple and restorative." },
+      { name: "Paneer Tikka Masala", price: 15, tags: ["veg", "gf", "popular"], heat: 1,
+        desc: "Soft cottage cubes tandoor cooked and simmered in a delightful creamy gravy." },
+      { name: "Vegetable Stew", price: 14, tags: ["veg", "gf", "nuts"],
+        desc: "Classic medley of vegetables blended with coconut and cashew gravy." },
+      { name: "Mandi Curry", price: 14, tags: ["veg", "gf"], heat: 2,
+        desc: "Vegetables cooked in a tangy Chettinadu curry sauce." },
+      { name: "Ennai Kathirikai", price: 14, tags: ["veg", "vegan", "gf"], heat: 2,
+        desc: "Indian baby egg plant cooked in spicy tangy sauce with sesame oil — a Chettinadu speciality." },
+      { name: "Mutter Paneer", price: 15, tags: ["veg", "gf"], heat: 1,
+        desc: "Cottage cheese cubes and green peas cooked in flavourful creamy curry sauce." },
+      { name: "Dal Makhni", price: 14, tags: ["veg", "gf"],
+        desc: "Favourite selection of lentils cooked in butter and tomato gravy." },
+      { name: "Dal Fry", price: 14, note: "Lentils", tags: ["veg", "gf"], heat: 1,
+        desc: "Yellow lentil cooked and tempered with South Indian seasoning." },
+      { name: "Channa Masala", price: 14, tags: ["veg", "vegan", "gf"], heat: 1,
+        desc: "Boiled garbanzo beans cooked in a mild, tangy flavoured tomato sauce." },
+      { name: "Palak Paneer", price: 15, tags: ["veg", "gf"],
+        desc: "Cottage cheese cooked in a spinach based creamy sauce." },
+      { name: "Paneer Kurchan", price: 15, tags: ["veg", "gf"], heat: 2,
+        desc: "Paneer and bell pepper tossed in a kadai masala." },
     ],
   },
 
-  /* ---------------------------------------------------- BREADS & SWEETS */
+  /* -------------------------------------------------------------- CHICKEN */
+  {
+    id: "chicken",
+    name: "Chicken",
+    tamil: "கோழி",
+    blurb: "All curries are served with premium quality rice.",
+    items: [
+      { name: "Chicken Curry", price: 16,
+        note: "Also Chicken Chettinadu | Chicken Khorma | Saag Chicken | Chicken Vindaloo",
+        tags: ["gf"], heat: 2,
+        desc: "The house curries, cooked to order in five styles." },
+      { name: "Pallipalayam Chicken", price: 18, tags: ["gf", "chef"], heat: 3,
+        desc: "Tender country chicken pieces cooked with onions, garlic, and a blend of regional spices and sliced coconut." },
+      { name: "Cindamani Chicken", price: 18, tags: ["gf"], heat: 3,
+        desc: "Chicken cooked in a rich infused red chilli and aromatic spices." },
+      { name: "Kozhi Varutha Curry", price: 18, note: "Chukka style", tags: ["gf"], heat: 2,
+        desc: "Tender chicken pieces simmered in a savoury blend of spices and herbs." },
+      { name: "Butter Chicken", price: 17, tags: ["gf", "popular"], heat: 1,
+        desc: "Boneless tandoori chicken sautéed in flavourful buttery tomato sauce." },
+      { name: "Poricha Kozhi", price: 17, note: "TN 74", tags: ["gf"], heat: 2,
+        desc: "Thigh meat deboned, spiced and shallow fried in a najil style." },
+    ],
+  },
+
+  /* ---------------------------------------------------------- LAMB & GOAT */
+  {
+    id: "lamb",
+    name: "Lamb & Goat",
+    tamil: "ஆட்டிறைச்சி",
+    blurb: "All curries are served with premium quality rice.",
+    items: [
+      { name: "Lamb Curry", price: 17.5,
+        note: "Also Lamb Saag | Lamb Vindaloo | Lamb Khorma", tags: ["gf"], heat: 2,
+        desc: "The house lamb curries, cooked to order in four styles." },
+      { name: "Lamb Chettinad", price: 18, tags: ["gf", "popular"], heat: 3,
+        desc: "Stone-ground Chettinad masala, cooked down slow." },
+      { name: "Lamb Chukka Masala", price: 19, tags: ["gf", "chef"], heat: 3,
+        desc: "Lamb dish with succulent pieces cooked in aromatic south Indian masala with crispy texture." },
+      { name: "Goat Curry Bone In", price: 18, note: "Also Goat Pepper Fry", tags: ["gf"], heat: 2,
+        desc: "Karaikudi style bone goat curry." },
+    ],
+  },
+
+  /* --------------------------------------------------- FISH FROM THE THAWA */
+  {
+    id: "fish",
+    name: "Fish from the Thawa",
+    tamil: "மீன்",
+    blurb: "Coromandel and Andhra coast — tamarind, black pepper and the dry-fried thawa.",
+    items: [
+      { name: "Chettinadu Fish Curry", price: 17, tags: ["gf", "popular"], heat: 3,
+        desc: "Boneless fish cooked on authentic ancient style of spice blends, with a touch of coconut milk." },
+      { name: "Cheppala Pulusu", price: 17, tags: ["gf"], heat: 3,
+        desc: "A tangy and spicy Andhra fish curry." },
+      { name: "Shrimp Pulusu", price: 18, tags: ["gf"], heat: 3,
+        desc: "A tangy and flavourful Andhra dish." },
+      { name: "Vanjaram Meen Varuval", price: 17, tags: ["gf"], heat: 2,
+        desc: "Fried king fish steak marinated in south Indian spices." },
+      { name: "Pomfret Fry", price: 21, tags: ["gf", "chef"], heat: 2,
+        desc: "Whole pomfret marinated in spices and crispy fried." },
+      { name: "Calamari Perattal", price: 16, tags: ["gf"], heat: 2,
+        desc: "Spiced calamari (squid) cooked in shallow fat." },
+      { name: "Nethilli Meen Perattal", price: 17, tags: ["gf"], heat: 2,
+        desc: "Anchovies (nethilli meen) cooked in a dry preparation with a medley of spices." },
+      { name: "Sardin Perattal", price: 16, tags: ["gf"], heat: 2,
+        desc: "Sardines cooked in a dry style with aromatic spices." },
+      { name: "Yera Varuval", price: 19, tags: ["gf"], heat: 2,
+        desc: "Shrimp (yera) marinated with spices and pan-fried to perfection, resulting in a flavourful and crispy seafood delicacy." },
+      { name: "Nandu Thokku", price: 25, note: "Crab", tags: ["gf"], heat: 3,
+        desc: "Crab (nandu) cooked in a rich and aromatic soggy masala." },
+      { name: "Nandu Pepper Fry", price: 25, note: "Crab", tags: ["gf", "chef", "popular"], heat: 3,
+        desc: "Crab pieces marinated and sautéed with a generous amount of black pepper." },
+    ],
+  },
+
+  /* -------------------------------------------------------- FROM CLAY POT */
+  {
+    id: "clay-pot",
+    name: "From the Clay Pot",
+    tamil: "மண் பானை",
+    blurb: "Marinated overnight, cooked against the wall of the pot.",
+    items: [
+      { name: "Paneer Tikka", price: 16, tags: ["veg", "gf", "popular"], heat: 1,
+        desc: "Marinated cottage cheese cubes grilled in the clay pots." },
+      { name: "Chicken Tikka", price: 17, tags: ["gf"], heat: 1,
+        desc: "Chicken breast tender, flavourful, and grilled in a clay pot." },
+      { name: "Hariyali Kebab", price: 17, tags: ["gf"], heat: 1,
+        desc: "Chicken breast marinated with fresh green herbs and grilled in clay pot." },
+      { name: "Seekh Kebab", price: 18, tags: ["gf"], heat: 2,
+        desc: "Handcrafted perfection meets smoky flavours in a clay pot." },
+      { name: "Tandoori Prawns", price: 19, tags: ["gf"], heat: 2,
+        desc: "Prawns marinated in spiced yoghurt marination and cooked in a clay pot." },
+    ],
+  },
+
+  /* --------------------------------------------------------------- BREADS */
   {
     id: "breads",
-    name: "Breads & Sweets",
-    tamil: "ரொட்டி & இனிப்பு",
-    blurb: "Parotta slapped flaky on the counter, and the sweets that end every celebration back home.",
+    name: "Breads",
+    tamil: "ரொட்டி",
+    blurb: "Slapped, layered and shredded at the pass. Listen for the kothu parotta.",
     items: [
-      { name: "Kerala Parotta (2 pc)", price: 8.00, tags: ["veg"],
-        desc: "Layered, slapped and shredded flaky at the pass." },
-      { name: "Kothu Parotta — Chicken", price: 18.00, tags: ["popular"], heat: 2,
-        desc: "Parotta chopped on the griddle with egg, chicken and salna. Listen for it." },
-      { name: "Appam (2 pc)", price: 9.00, tags: ["veg", "vegan", "gf"],
-        desc: "Lacy-edged rice hoppers with soft coconut centres." },
-      { name: "Gulab Jamun (2 pc)", price: 7.00, tags: ["veg"],
-        desc: "Warm, soaked in cardamom syrup." },
-      { name: "Payasam", price: 7.00, tags: ["veg", "nuts", "gf"],
-        desc: "Semiya payasam with cashew, raisin and a thread of saffron." },
+      { name: "Naan", price: 2.5, tags: ["veg"] },
+      { name: "Garlic Naan", price: 2.5, tags: ["veg"] },
+      { name: "Kashmiri Naan", price: 5, tags: ["veg", "nuts"],
+        desc: "Naan stuffed with sultanas, almonds, cashews, sprinkled with sweet spices." },
+      { name: "Bun Parotta", price: 2.5, note: "Also Veechu Parotta | Regular Parotta", tags: ["veg"] },
+      { name: "Chapatti", price: 2.5, tags: ["veg", "vegan"] },
+      { name: "Buhari Wheat Parotta", price: 5, tags: ["veg"] },
+      { name: "Bread Basket", price: 13, tags: ["veg"],
+        desc: "Naan, garlic naan, 2 bun parotta and 2 chapatti." },
+      { name: "Kothu Parotta", price: 14, note: "Veg or Egg", tags: ["popular"], heat: 2,
+        desc: "Chopped parotta hammered in a tawa with spices." },
+      { name: "Kothu Parotta", price: 15, note: "Chicken or Lamb", tags: ["popular"], heat: 2,
+        desc: "Chopped parotta hammered in a tawa with spices." },
     ],
   },
 
-  /* ---------------------------------------------------------------- DRINKS */
+  /* --------------------------------------------------------- INDO CHINESE */
+  {
+    id: "indo-chinese",
+    name: "Indo Chinese",
+    tamil: "இண்டோ சைனீஸ்",
+    blurb: "The wok side of the kitchen. Madras street Chinese — loud, glossy and garlicky.",
+    items: [
+      { name: "Gobi Manchurian", price: 13, tags: ["veg", "popular"], heat: 2,
+        desc: "Fried cauliflower sautéed with chilli, garlic, ginger and soy sauce." },
+      { name: "Chilli Chicken", price: 15, heat: 3,
+        desc: "Battered braised chicken pieces simmered in hot sauce with seasoned bell pepper and green onion." },
+      { name: "Veg Fried Rice", price: 15, priceText: "15 / 15 / 16 / 17",
+        note: "Veg / Egg / Chicken / Shrimp", tags: ["veg"], heat: 1,
+        desc: "Mildly seasoned rice, sautéed vegetables and green onion with soy sauce." },
+      { name: "Schezwan Chicken Fried Rice", price: 16, heat: 3,
+        desc: "Wok rice turned up with house schezwan paste." },
+      { name: "Chopsuey", price: 18, note: "Singapore dish", heat: 2,
+        desc: "Sliced chicken cooked in a Singapore style sauce tossed with fried noodle." },
+    ],
+  },
+
+  /* ------------------------------------------------------------- SAMPLERS */
+  {
+    id: "samplers",
+    name: "Samplers",
+    tamil: "சுவை தட்டு",
+    blurb: "For the table, or for anyone who can't choose.",
+    items: [
+      { name: "Vegetable Sampler", price: 19, tags: ["veg"],
+        desc: "Samosa, methu vada, chilly bhaji and veg pakora." },
+      { name: "Meat Sampler", price: 35, tags: ["popular"], heat: 2,
+        desc: "Chicken grill, chicken tikka, kola urundai and tandoori shrimp, served with salad." },
+      { name: "Seafood Sampler", price: 45, tags: ["chef"], heat: 2,
+        desc: "Anchovies, pomfret, tandoori shrimp, calamari and vanjeeram." },
+    ],
+  },
+
+  /* --------------------------------------------------------- KIDS SPECIAL */
+  {
+    id: "kids",
+    name: "Kids Special",
+    tamil: "குழந்தைகள்",
+    blurb: "Small plates for small people.",
+    items: [
+      { name: "Kids Special", price: 6,
+        note: "Chocolate Dosa | Cheese Dosa | Cone Dosa | Chicken 65",
+        desc: "Pick one." },
+    ],
+  },
+
+  /* -------------------------------------------------------------- DESSERT */
+  {
+    id: "dessert",
+    name: "Dessert",
+    tamil: "இனிப்பு",
+    blurb: "Where Madras meets Canada.",
+    items: [
+      { name: "Individually Baked Mango Pie", price: 9, tags: ["veg", "nuts"],
+        desc: "Hand folded pastry, toasted almonds." },
+      { name: "Canadian Maple Ice Cream", price: 3, tags: ["veg", "gf"] },
+      { name: "Kulfi", price: 5, note: "Malai | Paan | Mango | Pistachio", tags: ["veg", "gf", "nuts"] },
+      { name: "Mango Mousse", price: 4, tags: ["veg", "gf"] },
+      { name: "Jackfruit Cheese Cake", price: 9, tags: ["veg"],
+        desc: "Fresh jackfruit compote and whipped cream." },
+    ],
+  },
+
+  /* --------------------------------------------------------------- DRINKS */
   {
     id: "drinks",
     name: "Drinks",
     tamil: "பானங்கள்",
     blurb: "Pulled high between two tumblers, the way it's meant to be.",
     items: [
-      { name: "Degree Filter Coffee", price: 5.00, tags: ["veg", "gf", "popular"],
-        desc: "Chicory-blend decoction, pulled long in steel. Sweet unless you say otherwise." },
-      { name: "Masala Chai", price: 4.50, tags: ["veg", "gf"],
-        desc: "Boiled properly, with ginger and cardamom." },
-      { name: "Rose Milk", price: 6.00, tags: ["veg", "gf"],
-        desc: "Chilled, pink, unapologetically sweet." },
-      { name: "Mango Lassi", price: 7.00, tags: ["veg", "gf"],
-        desc: "Thick, with alphonso pulp." },
-      { name: "Fresh Lime Soda", price: 5.00, tags: ["veg", "vegan", "gf"],
-        desc: "Sweet, salted or both." },
+      { name: "Masala Chai", price: 3, tags: ["veg", "gf"] },
+      { name: "Madras Filter Coffee", price: 3, tags: ["veg", "gf", "popular"],
+        desc: "Chicory-blend decoction, pulled long in steel." },
+      { name: "Mango Lassi", price: 5, tags: ["veg", "gf"] },
+      { name: "Chilly Guava Sprite", price: 4, tags: ["veg", "vegan", "gf"] },
+      { name: "Kulukki Sarbath", price: 6, note: "Black Currant | Pineapple | Guava | Blueberry",
+        tags: ["veg", "vegan", "gf"] },
+      { name: "Lemon Soda", price: 5, tags: ["veg", "vegan", "gf"] },
+      { name: "Rose Milk", price: 4, tags: ["veg", "gf"] },
+      { name: "Neer More", price: 4, note: "Spiced buttermilk", tags: ["veg", "gf"] },
     ],
   },
 ];

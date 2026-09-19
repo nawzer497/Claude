@@ -92,10 +92,14 @@ working immediately. Replace it with real footage.
 
 ### 4. New look
 
-Drawn from South Indian visual language rather than generic restaurant
-template: banana-leaf green, turmeric, kumkum red and filter-coffee brown on a
-rice-batter cream, with the kolam dot lattice as a repeating texture. Section
-headings carry their Tamil name. Fraunces for display, Inter for text.
+Built from your own identity rather than a generic template. The palette is
+taken from the logo — **gold `#C2892C`, terracotta `#BE624E`, slate-blue
+`#4A5F7A`** — on a warm off-white, which is also the three-colour system the
+printed menu uses. Your headline ("Experience Contemporary Madras Style"), your
+strapline ("India's Grill Kitchen") and your own About copy are kept. The
+seigaiha wave motif from your site is carried through as a texture, section
+headings carry their Tamil name, and the Halal certification gets a visible
+badge in the hero and footer. Fraunces for display, Inter for text.
 
 Also in the rebuild: a live **Open now / Closing soon / Closed** badge computed
 from your real hours, a sticky Order / Menu / Deals / Call bar on mobile, and
@@ -106,29 +110,67 @@ directly in search results.
 
 ## Before this goes live
 
-1. **Check every price.** 14 of the 47 dishes were cross-referenced against
-   your public DoorDash and directory listings in September 2026 and are marked
-   `checked: true` in `data/menu.js`. **The rest are estimates and must be
-   confirmed against your till.** Dish descriptions were written for this site
-   and should be read through — correct anything that misdescribes a dish.
-2. **Set your ordering links** in `data/site.js`. The Uber Eats and Skip fields
-   are empty, so those buttons don't render. Add a URL and the button appears.
-   The "Order Direct" link currently points at `/order` — point it at your real
-   ordering system or remove it.
-3. **Confirm your hours** in `data/site.js`. They came from public listings.
-4. **Check the email address.** `hello@themadrasdiaries.ca` is a placeholder.
-5. **Replace the artwork.** The SVGs in `assets/img/` are abstract placeholders,
-   not photographs. Real food photography will do more for this site than any
-   other single change — the layout is built for it.
-6. **Review the story copy** in `index.html` under `id="story"`. It's written
-   from what's publicly known about the restaurant; it should be replaced with
-   the actual story.
-7. **The guest quotes** in the reviews section are drawn from public review
-   summaries and are not attributed to named individuals. Either replace them
-   with quotes you have permission to use, or swap the section for a live
-   Google reviews widget.
+Most of the guesswork is gone — the menu, contact details and brand colours now
+come from your own take-out menu PDF and live site. What's left:
 
----
+1. **Confirm the opening hours.** Three sources disagree:
+   - Your take-out menu PDF says **11:30 AM – 12:00 AM, all days** ← used on the site
+   - Your site footer says 11:00 AM – 12:00 AM all day
+   - Google/Yelp listings say 11:30 AM–12 AM Mon–Wed, to 2 AM Thu–Sat
+
+   Set the right one in `data/site.js` and fix the listings to match.
+2. **Drop in your real logo file.** `assets/img/logo.svg`, `mark-line.svg` and
+   `mark.svg` are paisley marks I drew to match your colours and arrangement —
+   they are *not* your actual artwork. Replace them with the real files; the
+   sizes are already wired up.
+3. **Add real photography.** The signature-dish cards and story image are
+   abstract SVG. You already have good food photography on the live site —
+   dropping those in will do more than any other single change.
+4. **Set your ordering and booking links** in `data/site.js`:
+   - `reservationUrl` — your Reservation button currently has no booking system
+     behind it, so every booking button falls back to dialling the restaurant.
+   - `ordering.direct` / `uberEats` / `skip` — empty links hide their buttons.
+   - `newsletterUrl` — paste your Mailchimp/Klaviyo form action to switch the
+     footer sign-up form on. Until then it shows an email link instead.
+5. **Check the spice ratings.** The chilli marks in `data/menu.js` are my
+   reading of each dish description, not your kitchen's. Correct any that are
+   wrong — they're the one editorial thing in the menu data.
+6. **Check the deals.** The seven weekly deals in `data/deals.js` are worked
+   examples built from your real dishes and prices. Decide what you actually
+   want to run, or switch any of them off with `active: false`.
+
+### Typos worth fixing on the printed menu and current site
+
+I corrected these on the website; they're still wrong on the source material:
+
+| Printed | Should be |
+|---|---|
+| Promfret Fry | Pomfret Fry |
+| "generous amont of black pepper" | amount |
+| "marinated in south indan spiced" | Indian spices |
+| "Panner Tikka" | Paneer Tikka |
+| "Baltered braised chicken" | Battered |
+| "Fusion of Spices at It's Best" | Its |
+| "Mildy seasoned rice, saulted vegetables" | Mildly / sautéed |
+| "resulting ina flavourful" | in a |
+
+## Issues in the current site this rebuild fixes
+
+Visible in the screenshots of the live site:
+
+- **The sticky header sits on top of body text** as you scroll — headings and
+  paragraphs run underneath the dark bar. Here the header reserves its own
+  space, and the menu page measures its sticky toolbar so jumping to a category
+  never parks the heading underneath it.
+- **Large empty vertical gaps** between sections. Spacing here is on a single
+  scale that tightens on smaller screens.
+- **The arced "Fusion of Spices" text** is hard to read and takes a whole
+  screen. That copy is now a normally-set section you can actually read.
+- **Three or four competing typefaces.** Two here: Fraunces for display, Inter
+  for text.
+- **No prices on the Special Menu**, no hours, and no ordering links anywhere.
+- **No mobile quick actions** — this build has a sticky Book / Deals /
+  Directions / Call bar.
 
 ## Deploying
 
@@ -163,6 +205,7 @@ items and deals.
 | Today's deal, weekly deals | `data/deals.js` → `weekly` |
 | A limited-time promotion | `data/deals.js` → `promos` |
 | Dish names, prices, descriptions | `data/menu.js` |
+| Reservation / newsletter links | `data/site.js` |
 | Hide a dish temporarily | `data/menu.js` → add `hidden: true` |
 | Colours and fonts | `assets/css/styles.css` → `:root` |
 

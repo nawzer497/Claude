@@ -32,7 +32,11 @@
     view: localStorage.getItem("md-menu-view") || "cards",
   };
 
-  function money(n) { return "$" + n.toFixed(2); }
+  /* The printed menu writes 18 and 2.5, not 18.00 — match it, and keep
+     whole dollars consistent with split prices like "$19 / 31". */
+  function money(n) {
+    return "$" + (Number.isInteger(n) ? n : n.toFixed(2));
+  }
 
   function heatMarks(level) {
     if (!level) return "";
@@ -53,14 +57,18 @@
   }
 
   function dishHTML(item) {
-    var haystack = (item.name + " " + (item.desc || "") + " " + (item.tags || []).join(" ")).toLowerCase();
+    var haystack = (item.name + " " + (item.desc || "") + " " + (item.note || "") + " " +
+                    (item.tags || []).join(" ")).toLowerCase();
+    /* priceText covers split prices like "19 / 31" (half / whole) */
+    var price = item.priceText ? "$" + item.priceText : money(item.price);
     return '<article class="dish" data-dish data-search="' + haystack.replace(/"/g, "") +
       '" data-tags="' + (item.tags || []).join(" ") + '">' +
       '<div class="dish__top">' +
         '<h3 class="dish__name">' + item.name + "</h3>" +
         '<span class="dish__dots" aria-hidden="true"></span>' +
-        '<span class="dish__price">' + money(item.price) + "</span>" +
+        '<span class="dish__price">' + price + "</span>" +
       "</div>" +
+      (item.note ? '<p class="dish__note">' + item.note + "</p>" : "") +
       (item.desc ? '<p class="dish__desc">' + item.desc + "</p>" : "") +
       '<div class="dish__tags">' + badges(item) + heatMarks(item.heat) + "</div>" +
     "</article>";
@@ -170,6 +178,15 @@
   }
 
   /* ------------------------------------------------------------- scrollspy */
+  /* The toolbar's height changes with viewport (filters wrap, rail wraps), so
+     measure it and let scroll-margin follow — otherwise jumping to a category
+     parks its heading underneath the sticky bar. */
+  function syncToolbarOffset() {
+    var bar = $(".menu-toolbar");
+    if (!bar) return;
+    document.documentElement.style.setProperty("--toolbar-h", bar.offsetHeight + "px");
+  }
+
   function initSpy() {
     var links = $$("[data-rail]");
     if (!links.length || !("IntersectionObserver" in window)) return;
@@ -208,7 +225,7 @@
               return {
                 "@type": "MenuItem",
                 "name": item.name,
-                "description": item.desc || undefined,
+                "description": [item.note, item.desc].filter(Boolean).join(" \u2014 ") || undefined,
                 "suitableForDiet": suitable.length ? suitable : undefined,
                 "offers": { "@type": "Offer", "price": item.price.toFixed(2), "priceCurrency": "CAD" }
               };
@@ -279,6 +296,12 @@
     });
 
     apply();
+    syncToolbarOffset();
+    window.addEventListener("resize", syncToolbarOffset);
+    if (window.ResizeObserver) {
+      var bar = $(".menu-toolbar");
+      if (bar) new ResizeObserver(syncToolbarOffset).observe(bar);
+    }
     initSpy();
     injectSchema();
   }

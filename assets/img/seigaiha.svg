@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" viewBox="0 0 60 30">
+  <defs><g id="w"><circle cx="30" cy="30" r="28" fill="none" stroke="#BE624E" stroke-width="2" opacity="0.5"/><circle cx="30" cy="30" r="21" fill="none" stroke="#BE624E" stroke-width="2" opacity="0.5"/><circle cx="30" cy="30" r="14" fill="none" stroke="#BE624E" stroke-width="2" opacity="0.5"/><circle cx="30" cy="30" r="7" fill="none" stroke="#BE624E" stroke-width="2" opacity="0.5"/></g></defs>
+  <rect width="60" height="30" fill="none"/>
+  <use href="#w" clip-path="inset(0 0 50% 0)"/>
+  <use href="#w" x="-30" y="15" clip-path="inset(0 0 50% 0)"/>
+  <use href="#w" x="30" y="15" clip-path="inset(0 0 50% 0)"/>
+</svg>

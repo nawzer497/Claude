@@ -426,9 +426,15 @@
       var key = el.getAttribute("data-site");
       var value = key.split(".").reduce(function (o, k) { return o && o[k]; }, SITE);
       if (value == null || value === "") return;
-      if (el.tagName === "A" && /url|maps|dial/i.test(key)) el.href = value;
-      else if (el.tagName === "A" && key === "email") { el.href = "mailto:" + value; el.textContent = value; }
-      else el.textContent = value;
+      /* A link gets the value as its href; anything else gets it as text.
+         Keeps social icons from printing their own URLs as a caption. */
+      if (el.tagName === "A") {
+        if (key === "email") { el.href = "mailto:" + value; el.textContent = value; }
+        else if (/^(https?:|tel:|mailto:|\/|#)/.test(value)) el.href = value;
+        else el.textContent = value;
+      } else {
+        el.textContent = value;
+      }
     });
 
     /* Telephone links */
@@ -453,10 +459,35 @@
     });
 
     /* Booking */
+    /* Booking. Without a reservation system the buttons dial the restaurant;
+       only those marked data-reserve-text are relabelled, so the header's
+       "Reservation" button keeps its name. */
     $$("[data-reserve]").forEach(function (a) {
-      if (SITE.reservationUrl) { a.href = SITE.reservationUrl; a.target = "_blank"; a.rel = "noopener"; }
-      else { a.href = "tel:" + (SITE.phoneDial || ""); a.textContent = "Call to book"; }
+      if (SITE.reservationUrl) {
+        a.href = SITE.reservationUrl;
+        a.target = "_blank";
+        a.rel = "noopener";
+      } else {
+        a.href = "tel:" + (SITE.phoneDial || "");
+        if (a.hasAttribute("data-reserve-text")) a.textContent = "Call to book";
+        else a.title = "Call " + (SITE.phone || "") + " to book";
+      }
     });
+
+    /* Halal badge — only shown when the kitchen is certified. */
+    if (SITE.halal) $$("[data-halal]").forEach(function (el) { el.hidden = false; });
+
+    /* Newsletter: the form only appears once a provider URL is configured,
+       otherwise visitors get a mailto link that actually works. */
+    var nlForm = $("[data-newsletter]");
+    var nlFallback = $("[data-newsletter-fallback]");
+    if (nlForm && SITE.newsletterUrl) {
+      nlForm.action = SITE.newsletterUrl;
+      nlForm.method = "post";
+      nlForm.target = "_blank";
+      nlForm.hidden = false;
+      if (nlFallback) nlFallback.hidden = true;
+    }
 
     var year = $("[data-year]");
     if (year) year.textContent = new Date().getFullYear();

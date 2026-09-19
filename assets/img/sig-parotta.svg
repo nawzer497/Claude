@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="presentation">
+  <defs>
+    <radialGradient id="r" cx="50%" cy="34%" r="80%">
+      <stop offset="0%" stop-color="#4A5F7A"/>
+      <stop offset="100%" stop-color="#232E3E"/>
+    </radialGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1.3" fill="#BFD0E4" opacity=".16"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="1000" fill="url(#r)"/>
+  <circle cx="400" cy="300" r="150" fill="none" stroke="#BFD0E4" stroke-width="2" opacity=".18"/><circle cx="400" cy="300" r="230" fill="none" stroke="#BFD0E4" stroke-width="2" opacity=".18"/><circle cx="400" cy="300" r="310" fill="none" stroke="#BFD0E4" stroke-width="2" opacity=".18"/><circle cx="400" cy="300" r="150" fill="none" stroke="#BFD0E4" stroke-width="2" opacity=".18"/><circle cx="400" cy="300" r="230" fill="none" stroke="#BFD0E4" stroke-width="2" opacity=".18"/><circle cx="400" cy="300" r="310" fill="none" stroke="#BFD0E4" stroke-width="2" opacity=".18"/><circle cx="400" cy="300" r="150" fill="none" stroke="#BFD0E4" stroke-width="2" opacity=".18"/><circle cx="400" cy="300" r="230" fill="none" stroke="#BFD0E4" stroke-width="2" opacity=".18"/><circle cx="400" cy="300" r="310" fill="none" stroke="#BFD0E4" stroke-width="2" opacity=".18"/>
+  <path d="M110 720 Q400 596 690 720 Q400 806 110 720Z" fill="#BFD0E4" opacity=".12"/>
+  <rect width="800" height="1000" fill="url(#dots)"/>
+</svg>
