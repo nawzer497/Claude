@@ -9,27 +9,62 @@ build step, no database, no npm dependencies.
 
 ---
 
-## Running it
+## Getting started
 
-The site now has a backend so everything is editable from a password-protected
-admin. You need [Node.js](https://nodejs.org) 18 or newer. No npm install —
-there are no dependencies.
+### The easy way
+
+1. **Install Node.js** — [nodejs.org](https://nodejs.org). Take the big green
+   **LTS** button and accept the defaults. This is the engine the site runs on;
+   you install it once and never think about it again.
+2. **Download the site.** On the repository page, press the green **Code**
+   button and choose **Download ZIP**. Unzip it somewhere you'll find again —
+   Documents is fine. (The branch this lives on is the repository's default,
+   so the ZIP already has the right code; there's nothing to switch.)
+3. **Start it.** Open the unzipped folder and double-click:
+   - **Mac** — `start-mac.command`
+   - **Windows** — `start-windows.bat`
+
+   The first time, it asks you to type a password. That's the password for the
+   admin — pick something you'll remember, at least 8 characters. It only asks
+   once.
+4. **Your browser opens at the site.** To edit it, scroll to the bottom and
+   click **Staff login**, or go straight to
+   [localhost:3000/admin.html](http://localhost:3000/admin.html).
+
+Leave the black window open while you're working — that's the site running.
+Closing it stops the site. Double-click the same file whenever you want it back.
+
+> **Mac, first time:** macOS may say the file "cannot be opened because it is
+> from an unidentified developer". Right-click the file and choose **Open**
+> instead of double-clicking, then click **Open** in the dialog. You only need
+> to do that once.
+>
+> If it says "permission denied" instead, the ZIP dropped the file's
+> permission to run. Open Terminal, type `chmod +x ` (with the space), drag
+> `start-mac.command` into the window, press return, then double-click it
+> again.
+
+### The terminal way
 
 ```bash
+git clone https://github.com/nawzer497/Claude.git
+cd Claude
+
 node server.js --set-password 'pick-a-strong-one'   # once
 node server.js                                       # start it
 ```
 
-Then open:
-
 - **the site** — http://localhost:3000/
 - **the admin** — http://localhost:3000/admin.html
 
-`PORT=8080 node server.js` runs it on another port.
+`PORT=8080 node server.js` runs it on another port. There are no dependencies,
+so there's nothing to `npm install`.
 
 ## What's here
 
 ```
+start-mac.command     Double-click to run it on a Mac
+start-windows.bat     Double-click to run it on Windows
 server.js             The server: sign-in, saving, uploads. No dependencies.
 admin.html            The admin console
 content/              ← everything the site says, as JSON. The admin writes these.
