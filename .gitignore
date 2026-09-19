@@ -1,0 +1,15 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Tooling (this project has no build step; nothing here is required to run it)
+node_modules/
+npm-debug.log*
+
+# Large source media — keep originals out of git, ship the encoded versions
+assets/video/*.mov
+assets/video/*.mkv
+assets/video/*-source.*
