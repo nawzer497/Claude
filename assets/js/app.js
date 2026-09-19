@@ -5,8 +5,10 @@
 (function () {
   "use strict";
 
-  var SITE  = window.SITE  || {};
-  var DEALS = window.DEALS || { weekly: {}, promos: [] };
+  var SITE     = window.SITE  || {};
+  var DEALS    = window.DEALS || { weekly: {}, promos: [] };
+  var TEXT     = window.TEXT  || {};
+  var SPECIALS = window.SPECIALS || { items: [] };
 
   var DAY_KEYS  = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
   var DAY_SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -511,8 +513,99 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
+
+  /* ----------------------------------------------------------------- copy */
+  /* Every heading and paragraph carrying data-text is filled from text.json,
+     so wording is editable in the admin without touching the markup. */
+  function renderText() {
+    $$("[data-text]").forEach(function (el) {
+      var v = TEXT[el.getAttribute("data-text")];
+      if (v != null && v !== "") el.textContent = v;
+    });
+  }
+
+  /* ------------------------------------------------------------- specials */
+  function renderSpecials() {
+    var host = $("[data-specials]");
+    if (!host) return;
+    var items = SPECIALS.items || [];
+    if (!items.length) { host.innerHTML = ""; return; }
+
+    host.innerHTML = items.map(function (s) {
+      var media = !s.media ? ""
+        : s.type === "video"
+          ? '<video src="' + s.media + '" muted loop playsinline preload="metadata" aria-hidden="true"></video>'
+          : '<img src="' + s.media + '" alt="' + (s.title || "") + '" loading="lazy">';
+      return '<article class="special">' +
+        '<div class="special__media">' + media +
+          (s.badge ? '<span class="special__badge">' + s.badge + "</span>" : "") +
+        "</div>" +
+        '<div class="special__body">' +
+          "<h3>" + (s.title || "") + "</h3>" +
+          (s.desc ? "<p>" + s.desc + "</p>" : "") +
+          (s.price ? '<span class="special__price">' + s.price + "</span>" : "") +
+        "</div></article>";
+    }).join("");
+
+    /* Videos here are decoration, so only play them while they're on screen. */
+    var vids = $$("video", host);
+    if (vids.length && "IntersectionObserver" in window && !reduceMotion) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) en.target.play().catch(function () {});
+          else en.target.pause();
+        });
+      }, { threshold: 0.25 });
+      vids.forEach(function (v) { io.observe(v); });
+    }
+
+    var plate = $("[data-plate]");
+    if (plate && SPECIALS.plateImage) plate.src = SPECIALS.plateImage;
+  }
+
+  /* The ring text is repeated until it fills the circle, so any wording the
+     owner types still reads as a continuous band. */
+  function renderRing() {
+    var text = $("[data-ring]");
+    var path = document.getElementById("ring-path");
+    if (!text || !path || !path.getTotalLength) return;
+
+    var phrase = (TEXT.ringText || "Fusion of Spices at its Best")
+      .trim().replace(/[\u00b7\s]+$/, "");
+    var circumference = path.getTotalLength();
+    var NS = "http://www.w3.org/2000/svg";
+
+    function run(offsetPercent, content) {
+      var tp = document.createElementNS(NS, "textPath");
+      tp.setAttribute("href", "#ring-path");
+      tp.setAttribute("startOffset", offsetPercent + "%");
+      tp.textContent = content;
+      text.appendChild(tp);
+      return tp;
+    }
+
+    /* Measure one copy, then place as many as fit with room to spare. Each
+       copy is centred on its own slice of the circle, so two runs can never
+       land on top of each other however the font renders. */
+    text.textContent = "";
+    var probe = run(50, phrase);
+    var one = probe.getComputedTextLength();
+    text.textContent = "";
+    if (!one) { run(50, phrase); return; }
+
+    var copies = Math.max(1, Math.floor(circumference / (one * 1.15)));
+    for (var i = 0; i < copies; i++) {
+      /* Centre each copy inside its own slice, so none straddles the point
+         where the path closes. */
+      run(+(((i + 0.5) / copies) * 100).toFixed(4), phrase);
+    }
+  }
+
+
+
   /* ------------------------------------------------------------------ go */
   function init() {
+    renderText();
     renderSiteDetails();
     renderStatus();
     renderHoursTable();
@@ -521,6 +614,8 @@
     renderHeroDeal();
     renderPromos();
     renderDayStrip();
+    renderSpecials();
+    renderRing();
     initReveal();
     setInterval(renderStatus, 60000);   /* keep "Open now" true as time passes */
   }

@@ -1,0 +1,70 @@
+{
+  "name": "The Madras Diaries",
+  "strapline": "India's Grill Kitchen",
+  "tagline": "We Serve Food, Harmony, & Laughter",
+  "phone": "604.707.8177",
+  "phoneDial": "+16047078177",
+  "email": "info@themadrasdiaries.ca",
+  "address": "1097 Kingsway",
+  "addressLine2": "Vancouver, BC V5V 3C7",
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=1097+Kingsway+Vancouver+BC",
+  "social": {
+    "instagram": "https://www.instagram.com/themadrasdiaries/",
+    "facebook": "https://www.facebook.com/themadrasdiaries/"
+  },
+  "ordering": {
+    "direct": {
+      "label": "Order Direct",
+      "url": "",
+      "note": "Best price — no commission"
+    },
+    "uberEats": {
+      "label": "Uber Eats",
+      "url": ""
+    },
+    "doordash": {
+      "label": "DoorDash",
+      "url": "https://www.doordash.com/store/the-madras-diaries-vancouver-28955122/"
+    },
+    "skip": {
+      "label": "SkipTheDishes",
+      "url": ""
+    }
+  },
+  "reservationUrl": "",
+  "newsletterUrl": "",
+  "halal": true,
+  "rating": "4.5",
+  "reviewCount": "707",
+  "hours": {
+    "sun": {
+      "open": "11:30",
+      "close": "24:00"
+    },
+    "mon": {
+      "open": "11:30",
+      "close": "24:00"
+    },
+    "tue": {
+      "open": "11:30",
+      "close": "24:00"
+    },
+    "wed": {
+      "open": "11:30",
+      "close": "24:00"
+    },
+    "thu": {
+      "open": "11:30",
+      "close": "24:00"
+    },
+    "fri": {
+      "open": "11:30",
+      "close": "24:00"
+    },
+    "sat": {
+      "open": "11:30",
+      "close": "24:00"
+    }
+  },
+  "hoursNote": "Open all days. Kitchen takes last orders 30 minutes before close."
+}

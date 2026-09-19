@@ -1,33 +1,107 @@
 # The Madras Diaries — website
 
-A rebuild of themadrasdiaries.ca: same Madras kitchen, modern front end.
-Static HTML/CSS/JS — no build step, no framework, no database. Open
-`index.html` in a browser and it runs.
+A rebuild of themadrasdiaries.ca: same Madras kitchen, modern front end, and a
+password-protected admin where the restaurant edits everything itself — menu,
+colours, wording, hours, deals, photos and video.
+
+Plain HTML, CSS and JavaScript with a small Node server. No framework, no
+build step, no database, no npm dependencies.
 
 ---
+
+## Running it
+
+The site now has a backend so everything is editable from a password-protected
+admin. You need [Node.js](https://nodejs.org) 18 or newer. No npm install —
+there are no dependencies.
+
+```bash
+node server.js --set-password 'pick-a-strong-one'   # once
+node server.js                                       # start it
+```
+
+Then open:
+
+- **the site** — http://localhost:3000/
+- **the admin** — http://localhost:3000/admin.html
+
+`PORT=8080 node server.js` runs it on another port.
 
 ## What's here
 
 ```
-index.html            Home — hero video, daily deals, signatures, story, hours
-menu.html             Full menu with search, dietary filters and two layouts
-data/site.js          ← contact details, hours, ordering links
-data/deals.js         ← daily deals and limited-time promotions
-data/menu.js          ← every dish, price and tag
-assets/css/styles.css Design system and all page styles
-assets/js/app.js      Hours logic, deals engine, hero video, nav
-assets/js/menu.js     Menu search, filters, view modes, scrollspy
-assets/img/*.svg      Placeholder artwork and the brand mark
-assets/video/         Hero video goes here
+server.js             The server: sign-in, saving, uploads. No dependencies.
+admin.html            The admin console
+content/              ← everything the site says, as JSON. The admin writes these.
+  site.json             contact details, hours, ordering links
+  theme.json            colours, fonts, logo, hero video
+  text.json             every heading and paragraph on the home page
+  menu.json             all 112 dishes
+  deals.json            weekly deals and limited-time promotions
+  specials.json         the featured dishes and the rotating plate
+  media/                photos and videos you upload
+  .auth.json            your password hash — never committed
+index.html            Home
+menu.html             Full menu
+assets/css/styles.css Site design system
+assets/css/admin.css  Admin styles
+assets/js/content.js  Loads content/*.json and applies the theme
+assets/js/app.js      Hours, deals, hero video, specials, the rotating ring
+assets/js/menu.js     Menu search, filters, layouts
+assets/js/admin.js    The admin console
+assets/img/logo.png   Your logo
+assets/img/food/      Photography cropped from what you sent
+data/defaults.js      GENERATED offline copy — see "Opening it without a server"
+tools/build-defaults.js
 ```
 
-**The three files in `data/` are the ones you edit.** Everything on the site
-reads from them. Each has instructions at the top. You don't need to touch the
-HTML to change a price, a deal, or your phone number.
+## The admin
 
----
+Sign in at `/admin.html`. Eight sections:
 
-## The four things you asked for
+| Section | What you can change |
+|---|---|
+| **Brand & colours** | The three logo colours and every shade drawn from them, the logo file, heading and body fonts, the hero video |
+| **Words on the site** | Every heading and paragraph — hero, about, deals, specials, visit, and the text that circles the plate |
+| **Menu** | All 15 sections and 112 dishes. Add, delete, reorder, set prices (including split prices like "19 / 31"), notes, descriptions, dietary tags and spice level |
+| **Deals & promotions** | A standing deal for each day of the week, plus dated promotions with a countdown and a promotional photo |
+| **Special section** | The featured dishes — each can show a **photo or a video** — and the rotating plate image |
+| **Hours & contact** | Opening times per day, phone, email, address, and every external link |
+| **Photos & videos** | Drag-and-drop upload, then pick files from the library anywhere else in the admin |
+| **Password** | Change the admin password |
+
+Nothing is written until you press **Save**. **Discard changes** puts everything
+back to the last save. Each save keeps the previous version of the file as
+`.bak`, so a bad edit can be undone by restoring it on the server.
+
+### About the password
+
+It's stored as a scrypt hash with a random salt in `content/.auth.json` — the
+plain password is never written down, and that file is git-ignored. Sign-in is
+rate-limited to 10 attempts per 15 minutes. Sessions last 8 hours and are held
+in memory, so restarting the server signs everyone out.
+
+**Put it behind HTTPS before it faces the internet.** The session cookie is
+HttpOnly and SameSite=Strict, but without TLS the password still crosses the
+network in the clear. Any host that terminates TLS for you (Caddy, nginx,
+Cloudflare, Railway, Render, Fly) solves this.
+
+## Opening it without a server
+
+Double-clicking `index.html` still works: `fetch` is blocked on `file://`, so
+the page falls back to `data/defaults.js`, a bundled snapshot of the content.
+It goes stale as soon as you edit anything in the admin. Refresh it with:
+
+```bash
+node tools/build-defaults.js
+```
+
+On a normal static host (Netlify, Cloudflare Pages, plain FTP) no fallback is
+needed — `content/*.json` are just files and the site reads them directly. You
+simply can't use the admin there, because nothing can write the files back;
+edit the JSON and re-upload, or run `server.js` on a host that allows it.
+
+## What you asked for
 
 ### 1. Daily deals and promotions
 
@@ -90,7 +164,22 @@ working immediately. Replace it with real footage.
 - **Prints properly** — the toolbar and navigation drop away and you get a
   clean menu on paper.
 
-### 4. New look
+### 4. The rotating plate
+
+The banana-leaf thali sits inside a ring of text that turns slowly, the way
+your current site arcs "Fusion of Spices at Its Best" around the plate — but
+set so it stays readable. The phrase is repeated as many times as fit and each
+copy is centred in its own slice of the circle, so it can never overlap itself
+whatever wording you type. Both the phrase (**Words on the site → Rotating
+ring**) and the plate image (**Special section**) are editable. It holds still
+for anyone who has "reduce motion" switched on.
+
+The plate was cut out of the screenshot you sent and its background removed.
+It's clipped flat at the bottom because the screenshot was — the site fades
+that edge out to hide it. **Send me the original plate image and it'll be
+perfect.**
+
+### 5. New look
 
 Built from your own identity rather than a generic template. The palette is
 taken from the logo — **gold `#C2892C`, terracotta `#BE624E`, slate-blue
@@ -110,34 +199,25 @@ directly in search results.
 
 ## Before this goes live
 
-Most of the guesswork is gone — the menu, contact details and brand colours now
-come from your own take-out menu PDF and live site. What's left:
-
-1. **Confirm the opening hours.** Three sources disagree:
-   - Your take-out menu PDF says **11:30 AM – 12:00 AM, all days** ← used on the site
+1. **Set your own admin password.** `node server.js --set-password '...'`
+2. **Put it behind HTTPS.** See "About the password" above.
+3. **Confirm the opening hours.** Three sources still disagree:
+   - Your take-out menu PDF says **11:30 AM – 12:00 AM, all days** ← used here
    - Your site footer says 11:00 AM – 12:00 AM all day
-   - Google/Yelp listings say 11:30 AM–12 AM Mon–Wed, to 2 AM Thu–Sat
+   - Google and Yelp say 11:30 AM–12 AM Mon–Wed, to 2 AM Thu–Sat
 
-   Set the right one in `data/site.js` and fix the listings to match.
-2. **Drop in your real logo file.** `assets/img/logo.svg`, `mark-line.svg` and
-   `mark.svg` are paisley marks I drew to match your colours and arrangement —
-   they are *not* your actual artwork. Replace them with the real files; the
-   sizes are already wired up.
-3. **Add real photography.** The signature-dish cards and story image are
-   abstract SVG. You already have good food photography on the live site —
-   dropping those in will do more than any other single change.
-4. **Set your ordering and booking links** in `data/site.js`:
-   - `reservationUrl` — your Reservation button currently has no booking system
-     behind it, so every booking button falls back to dialling the restaurant.
-   - `ordering.direct` / `uberEats` / `skip` — empty links hide their buttons.
-   - `newsletterUrl` — paste your Mailchimp/Klaviyo form action to switch the
-     footer sign-up form on. Until then it shows an email link instead.
-5. **Check the spice ratings.** The chilli marks in `data/menu.js` are my
-   reading of each dish description, not your kitchen's. Correct any that are
-   wrong — they're the one editorial thing in the menu data.
-6. **Check the deals.** The seven weekly deals in `data/deals.js` are worked
-   examples built from your real dishes and prices. Decide what you actually
-   want to run, or switch any of them off with `active: false`.
+   Set the right one under **Hours & contact** and fix the listings to match.
+4. **Send the original plate image** (the banana-leaf thali). Mine is cut out
+   of a screenshot and clipped at the bottom.
+5. **Add the rest of your photography.** Four dishes were cropped from what you
+   sent and are in the special section. Upload more under **Photos & videos**.
+6. **Set the links that have no system behind them** under **Hours & contact**:
+   `reservationUrl` (the Reservation button currently dials the restaurant),
+   the ordering links, and the newsletter form action.
+7. **Check the spice ratings** in the menu — they're my reading of each
+   description, not your kitchen's.
+8. **Decide on the deals.** The seven weekly deals are worked examples built
+   from your real dishes and prices. Edit or switch them off.
 
 ### Typos worth fixing on the printed menu and current site
 
@@ -197,17 +277,21 @@ items and deals.
 
 ## Editing quick reference
 
-| To change | Edit |
+| To change | Where |
 |---|---|
-| Phone, address, email, socials | `data/site.js` |
-| Opening hours | `data/site.js` → `hours` |
-| Uber Eats / DoorDash / Skip links | `data/site.js` → `ordering` |
-| Today's deal, weekly deals | `data/deals.js` → `weekly` |
-| A limited-time promotion | `data/deals.js` → `promos` |
-| Dish names, prices, descriptions | `data/menu.js` |
-| Reservation / newsletter links | `data/site.js` |
-| Hide a dish temporarily | `data/menu.js` → add `hidden: true` |
-| Colours and fonts | `assets/css/styles.css` → `:root` |
+| Colours, fonts, logo | Admin → Brand & colours |
+| Any heading or paragraph | Admin → Words on the site |
+| Dishes, prices, tags | Admin → Menu |
+| Today's deal, weekly deals | Admin → Deals & promotions |
+| A limited-time promotion | Admin → Deals & promotions |
+| Featured dishes, their photos or videos | Admin → Special section |
+| Opening hours | Admin → Hours & contact |
+| Phone, address, email, socials | Admin → Hours & contact |
+| Ordering and reservation links | Admin → Hours & contact |
+| Upload a photo or video | Admin → Photos & videos |
+| The admin password | Admin → Password |
+
+Everything above is also editable by hand in `content/*.json` if you'd rather.
 
 Closing times after midnight are written by counting past 24 — `"26:00"` means
 2 AM. The open/closed badge and the hours table both read that correctly.

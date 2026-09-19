@@ -13,3 +13,10 @@ npm-debug.log*
 assets/video/*.mov
 assets/video/*.mkv
 assets/video/*-source.*
+
+# Admin credentials — never commit these
+content/.auth.json
+
+# Backups and temp files the server writes next to content
+content/*.bak
+content/*.tmp

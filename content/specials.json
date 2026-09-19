@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "title": "Signature Grill Chicken",
+      "price": "$19 half · $31 whole",
+      "badge": "The house bird",
+      "desc": "Marinated skin-on in our secret blend of Southern Indian spice, grilled in the rotisserie oven.",
+      "media": "assets/img/food/chicken-banana-leaf.jpg",
+      "type": "image"
+    },
+    {
+      "title": "Thambi Vilas Biriyani",
+      "price": "$17 – $18",
+      "badge": "Dindigul style",
+      "desc": "Seeraga samba premium rice, sealed and cooked the way Dindigul does it.",
+      "media": "assets/img/food/biryani-pot.jpg",
+      "type": "image"
+    },
+    {
+      "title": "Pomfret Fry",
+      "price": "$21",
+      "badge": "From the thawa",
+      "desc": "Whole pomfret marinated in spices and crispy fried.",
+      "media": "assets/img/food/grilled-fish.jpg",
+      "type": "image"
+    },
+    {
+      "title": "Madurai Kari Chukka Dosa",
+      "price": "$14",
+      "badge": "Chef’s pick",
+      "desc": "Madurai-style spiced meat preparation, folded into a crisp dosa.",
+      "media": "assets/img/food/uthappam.jpg",
+      "type": "image"
+    }
+  ],
+  "plateImage": "assets/img/food/plate-banana-leaf.png"
+}

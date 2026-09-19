@@ -133,7 +133,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <img class="footer-logo" src="assets/img/logo.svg" width="168" height="122" alt="The Madras Diaries — India’s Grill Kitchen">
+        <img class="footer-logo" data-logo src="assets/img/logo.png" width="168" height="122" alt="The Madras Diaries — India’s Grill Kitchen">
         <p style="max-width:34ch;margin-top:1rem">South Indian grill kitchen on Kingsway.
           We serve food, harmony, &amp; laughter.</p>
         <p class="halal halal--footer" data-halal hidden>
@@ -216,10 +216,10 @@
   </a>
 </nav>
 
-<script src="data/site.js"></script>
-<script src="data/deals.js"></script>
-<script src="data/menu.js"></script>
-<script src="assets/js/app.js"></script>
-<script src="assets/js/menu.js"></script>
+<!-- Offline fallback, used only when opened straight off disk.
+     Regenerate with: node tools/build-defaults.js -->
+<script src="data/defaults.js"></script>
+<!-- Loads content/*.json, applies the saved theme, then runs the page. -->
+<script src="assets/js/content.js" data-scripts="assets/js/app.js,assets/js/menu.js"></script>
 </body>
 </html>

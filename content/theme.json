@@ -1,0 +1,25 @@
+{
+  "colors": {
+    "gold": "#C2892C",
+    "goldLight": "#E0AE55",
+    "goldDeep": "#9A6B1E",
+    "clay": "#BE624E",
+    "clayLight": "#CE7360",
+    "clayDeep": "#9E4A38",
+    "slate": "#4A5F7A",
+    "slateDeep": "#2F3E52",
+    "ink": "#23292F",
+    "cream": "#FDFAF4",
+    "text": "#35404D"
+  },
+  "fonts": {
+    "display": "Fraunces",
+    "body": "Inter"
+  },
+  "logo": "assets/img/logo.png",
+  "heroVideo": {
+    "mp4": "assets/video/hero.mp4",
+    "webm": "assets/video/hero.webm",
+    "poster": "assets/img/hero-poster.svg"
+  }
+}

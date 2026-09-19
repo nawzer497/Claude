@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — The Madras Diaries</title>
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+<!-- ─────────────────────────────────────────────── login ── -->
+<div class="login-wrap" id="login-view" hidden>
+  <form class="login" id="login-form">
+    <img src="assets/img/logo.png" alt="The Madras Diaries">
+    <h1>Admin sign in</h1>
+    <p>Enter the admin password to edit the site.</p>
+    <label class="f">
+      <span class="visually-hidden" style="position:absolute;left:-9999px">Password</span>
+      <input type="password" id="login-password" autocomplete="current-password" required
+             placeholder="Password" autofocus>
+    </label>
+    <p class="banner banner--err" id="login-error" hidden style="margin-top:1rem"></p>
+    <p style="margin-top:1.25rem"><button class="btn btn--primary" style="width:100%;justify-content:center" type="submit">Sign in</button></p>
+  </form>
+</div>
+
+<!-- ────────────────────────────────────────────── console ── -->
+<div class="shell" id="admin-view" hidden>
+  <aside class="side">
+    <div class="side__brand">
+      <img src="assets/img/logo.png" alt="">
+      <span><b>Madras Diaries</b><span>Site admin</span></span>
+    </div>
+    <nav id="tabs" aria-label="Admin sections">
+      <button data-tab="brand"    aria-current="true">Brand &amp; colours</button>
+      <button data-tab="text">Words on the site</button>
+      <button data-tab="menu">Menu</button>
+      <button data-tab="deals">Deals &amp; promotions</button>
+      <button data-tab="specials">Special section</button>
+      <button data-tab="hours">Hours &amp; contact</button>
+      <button data-tab="media">Photos &amp; videos</button>
+      <button data-tab="account">Password</button>
+    </nav>
+    <div class="side__foot">
+      <a href="index.html" target="_blank" rel="noopener">View the site &#8599;</a>
+      <button type="button" id="logout">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header>
+      <div>
+        <h2 id="pane-title">Brand &amp; colours</h2>
+        <p id="pane-intro"></p>
+      </div>
+    </header>
+    <div id="pane"></div>
+  </main>
+
+  <div class="savebar">
+    <span class="msg" id="save-msg">No unsaved changes</span>
+    <button class="btn" id="revert" disabled>Discard changes</button>
+    <button class="btn btn--primary" id="save" disabled>Save changes</button>
+  </div>
+</div>
+
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

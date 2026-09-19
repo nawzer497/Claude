@@ -1,0 +1,1124 @@
+{
+  "categories": [
+    {
+      "id": "signature",
+      "name": "Signature Dishes",
+      "tamil": "சிறப்பு உணவுகள்",
+      "blurb": "The eight plates the kitchen is known for — the rotisserie bird, the street-food parottas, and the crab.",
+      "items": [
+        {
+          "name": "Signature Grill Chicken",
+          "price": 19,
+          "priceText": "19 / 31",
+          "note": "Half / Whole · Signature Spicy | Andhra Spicy | Madurai Malli Spicy",
+          "tags": [
+            "gf",
+            "chef",
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Marinated whole chicken, skin on, in our secret blend of Southern Indian spice, grilled to perfection in our rotisserie oven."
+        },
+        {
+          "name": "Lappa Parotta",
+          "price": 19,
+          "note": "Lamb or Chicken",
+          "tags": [
+            "chef"
+          ],
+          "heat": 2,
+          "desc": "Classic street food — tender pieces of chicken or lamb cooked with aromatic spices and wrapped in a deliciously flaky parotta."
+        },
+        {
+          "name": "Thooku Chatti Parotta",
+          "price": 18,
+          "note": "Lamb or Chicken",
+          "tags": [
+            "chef",
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Classic street food — curried layered parotta wrapped with banana leaf and tawa steamed."
+        },
+        {
+          "name": "Thambi Vilas Biriyani",
+          "price": 17,
+          "priceText": "17 / 18",
+          "note": "Chicken / Mutton",
+          "tags": [
+            "chef",
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Seeraga samba premium rice cooked in a Dindigul style."
+        },
+        {
+          "name": "Mandhi Biriyani",
+          "price": 17,
+          "priceText": "17 / 18",
+          "note": "Chicken / Lamb",
+          "tags": [
+            "chef"
+          ],
+          "heat": 2,
+          "desc": "Kongu style grill meat and flavourful rice."
+        },
+        {
+          "name": "Madurai Kari Chukka Dosa",
+          "price": 14,
+          "tags": [
+            "chef"
+          ],
+          "heat": 2,
+          "desc": "Madurai-style spiced meat preparation, folded into a crisp dosa."
+        },
+        {
+          "name": "Pomfret Fry",
+          "price": 21,
+          "tags": [
+            "gf",
+            "chef"
+          ],
+          "heat": 2,
+          "desc": "Whole pomfret marinated in spices and crispy fried."
+        },
+        {
+          "name": "Nandu Pepper Fry",
+          "price": 25,
+          "tags": [
+            "gf",
+            "chef",
+            "popular"
+          ],
+          "heat": 3,
+          "desc": "Crab pieces marinated and sautéed with a generous amount of black pepper."
+        }
+      ]
+    },
+    {
+      "id": "appetizers",
+      "name": "Appetizers",
+      "tamil": "தொடக்கம்",
+      "blurb": "Tiffin, street snacks and the fried things Madras eats standing up.",
+      "items": [
+        {
+          "name": "Idly",
+          "price": 8,
+          "tags": [
+            "veg",
+            "vegan"
+          ],
+          "desc": "Steamed rice cake served with chutney and sambar."
+        },
+        {
+          "name": "Idly with Kumbakonam Kadappa",
+          "price": 10,
+          "tags": [
+            "veg"
+          ],
+          "desc": "Idly served with lentil and potato spiced curry."
+        },
+        {
+          "name": "Medu Vada",
+          "price": 7,
+          "tags": [
+            "veg",
+            "vegan"
+          ],
+          "desc": "Golden fried savoury lentil donut served with chutney and sambar."
+        },
+        {
+          "name": "Thattu Idly",
+          "price": 10,
+          "note": "Rameswaram style",
+          "tags": [
+            "veg",
+            "popular"
+          ],
+          "desc": "Flattened rice cakes cooked until crispy and served with kadappa and chutneys."
+        },
+        {
+          "name": "Cut Mirchi",
+          "price": 8,
+          "tags": [
+            "veg",
+            "nuts"
+          ],
+          "heat": 3,
+          "desc": "Battered spicy hot peppers stuffed with peanut masala."
+        },
+        {
+          "name": "Egg Bonda",
+          "price": 8,
+          "note": "Andhra style",
+          "heat": 2,
+          "desc": "Battered boiled egg with spicy onion stuffing."
+        },
+        {
+          "name": "Egg Puff",
+          "price": 8,
+          "note": "2 pieces",
+          "desc": "Stuffed egg baked with puffed pastry roll."
+        },
+        {
+          "name": "Mutton Puffs",
+          "price": 9,
+          "heat": 1,
+          "desc": "Spicy lamb stuffed and baked with puff pastry rolls."
+        },
+        {
+          "name": "Chicken 65",
+          "price": 13,
+          "tags": [
+            "gf",
+            "popular"
+          ],
+          "heat": 3,
+          "desc": "Chicken cubes flavoured with exotic south Indian spices and deep fried — a classic South Indian dish."
+        },
+        {
+          "name": "Nethili Meen Varuval",
+          "price": 13,
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Speciality of Chettinadu anchovies."
+        },
+        {
+          "name": "Roadside Kalan",
+          "price": 11,
+          "tags": [
+            "veg"
+          ],
+          "heat": 2,
+          "desc": "Shredded cabbage and diced mushroom bound and fried, cooked in Indo-Chinese sauce."
+        },
+        {
+          "name": "Kola Urundai",
+          "price": 13,
+          "heat": 2,
+          "desc": "Deep-fried ground lamb meat with a mix of spices."
+        },
+        {
+          "name": "Gobi Manchurian",
+          "price": 13,
+          "tags": [
+            "veg",
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Fried cauliflower sautéed with chilli, garlic, ginger and soy sauce."
+        },
+        {
+          "name": "Theatre Samosa",
+          "price": 7,
+          "tags": [
+            "veg"
+          ],
+          "heat": 1,
+          "desc": "Pastry filled with spiced onions."
+        },
+        {
+          "name": "Pakora",
+          "price": 8,
+          "tags": [
+            "veg",
+            "vegan"
+          ],
+          "heat": 1,
+          "desc": "Deep fried battered onions."
+        }
+      ]
+    },
+    {
+      "id": "dosa",
+      "name": "Dosa",
+      "tamil": "தோசை",
+      "blurb": "Thin crispy crepes of rice and lentils, off the iron to order. Seventeen ways.",
+      "items": [
+        {
+          "name": "Plain Dosa",
+          "price": 10,
+          "tags": [
+            "veg",
+            "vegan"
+          ],
+          "desc": "Thin crispy crepe of rice and lentils."
+        },
+        {
+          "name": "Masala Dosa",
+          "price": 11,
+          "tags": [
+            "veg",
+            "popular"
+          ],
+          "desc": "Thin crispy crepe of rice and lentils stuffed with potatoes and onions."
+        },
+        {
+          "name": "Madurai Malli Masala",
+          "price": 13,
+          "tags": [
+            "veg"
+          ],
+          "heat": 2,
+          "desc": "Thin crispy crepe of rice and lentil spread with sweetened coriander chutney and Chettinadu spices."
+        },
+        {
+          "name": "Ghee Roast Masala",
+          "price": 13,
+          "tags": [
+            "veg",
+            "chef"
+          ],
+          "desc": "Thin crispy crepe of rice and black gram dhal, indulged with ghee, with spiced potato masala."
+        },
+        {
+          "name": "Onion Masala Dosa",
+          "price": 13,
+          "tags": [
+            "veg"
+          ],
+          "desc": "Crepe filled with a spiced potato and onion mixture."
+        },
+        {
+          "name": "Mysore Masala Dosa",
+          "price": 13,
+          "tags": [
+            "veg"
+          ],
+          "heat": 2,
+          "desc": "Thin crispy crepe of rice and lentils with layers of hot spices, filled with spiced potato."
+        },
+        {
+          "name": "Pondicherry Masala Dosa",
+          "price": 13,
+          "tags": [
+            "veg"
+          ],
+          "desc": "Thin, crispy crepe filled with a spiced potato mixture."
+        },
+        {
+          "name": "Pondicherry Chicken Dosa",
+          "price": 14,
+          "heat": 2,
+          "desc": "South Indian dosa with chicken, reflecting regional culinary creativity."
+        },
+        {
+          "name": "Pondicherry Mutton Dosa",
+          "price": 15,
+          "tags": [
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Indian dosa with spiced mutton, reflecting regional culinary creativity."
+        },
+        {
+          "name": "Paneer Masala Dosa",
+          "price": 13,
+          "tags": [
+            "veg"
+          ],
+          "desc": "Crepe stuffed with paneer masala."
+        },
+        {
+          "name": "Vegetable Kari Dosa",
+          "price": 13,
+          "tags": [
+            "veg"
+          ],
+          "heat": 2,
+          "desc": "Thick dosa spread with spicy chutney and vegetable."
+        },
+        {
+          "name": "Mutta Dosa",
+          "price": 13,
+          "desc": "Dosa cooked with cracked fresh egg."
+        },
+        {
+          "name": "Kozhi Milagu Dosa",
+          "price": 14,
+          "heat": 3,
+          "desc": "Thick dosa topped with spicy chutney and pepper chicken."
+        },
+        {
+          "name": "Madurai Kari Chukka Dosa",
+          "price": 14,
+          "tags": [
+            "chef"
+          ],
+          "heat": 2,
+          "desc": "Madurai-style spiced meat preparation."
+        },
+        {
+          "name": "Kal Dosa Chicken Curry",
+          "price": 16,
+          "heat": 2,
+          "desc": "Thick kal dosa served with flavourful chicken curry, showcasing regional culinary influences."
+        },
+        {
+          "name": "Idiyappam with Mutton Paya",
+          "price": 17,
+          "note": "3 pieces",
+          "heat": 2,
+          "desc": "Three pieces of idiyappam served with South Indian paya."
+        }
+      ]
+    },
+    {
+      "id": "biryani",
+      "name": "Biryani",
+      "tamil": "பிரியாணி",
+      "blurb": "Seeraga samba premium rice, Dindigul and Kongu styles. Mandhi biryani is Kongu-style grill meat with flavourful rice.",
+      "items": [
+        {
+          "name": "Thambi Vilas Chicken Biryani",
+          "price": 17,
+          "tags": [
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Chicken and seeraga samba premium rice cooked in a Dindigul style."
+        },
+        {
+          "name": "Thambi Vilas Mutton Biryani",
+          "price": 18,
+          "tags": [
+            "chef",
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Mutton and seeraga samba premium rice cooked in a Dindigul style."
+        },
+        {
+          "name": "Mandhi Chicken Biryani",
+          "price": 17,
+          "heat": 2,
+          "desc": "Kongu style grill meat with flavourful rice."
+        },
+        {
+          "name": "Mandhi Lamb Biryani",
+          "price": 18,
+          "heat": 2,
+          "desc": "Kongu style grill meat with flavourful rice."
+        },
+        {
+          "name": "Chicken 65 Biryani",
+          "price": 17,
+          "heat": 3,
+          "desc": "Diced deep fried chicken cubes fused with flavoured rice."
+        },
+        {
+          "name": "Vegetable Biryani",
+          "price": 15,
+          "tags": [
+            "veg"
+          ],
+          "heat": 1,
+          "desc": "Premium flavoured rice fused with vegetables."
+        }
+      ]
+    },
+    {
+      "id": "veg-curries",
+      "name": "Veg Curries",
+      "tamil": "காய்கறி கறி",
+      "blurb": "All curries are served with premium quality rice.",
+      "items": [
+        {
+          "name": "Paneer Tikka Masala",
+          "price": 15,
+          "tags": [
+            "veg",
+            "gf",
+            "popular"
+          ],
+          "heat": 1,
+          "desc": "Soft cottage cubes tandoor cooked and simmered in a delightful creamy gravy."
+        },
+        {
+          "name": "Vegetable Stew",
+          "price": 14,
+          "tags": [
+            "veg",
+            "gf",
+            "nuts"
+          ],
+          "desc": "Classic medley of vegetables blended with coconut and cashew gravy."
+        },
+        {
+          "name": "Mandi Curry",
+          "price": 14,
+          "tags": [
+            "veg",
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Vegetables cooked in a tangy Chettinadu curry sauce."
+        },
+        {
+          "name": "Ennai Kathirikai",
+          "price": 14,
+          "tags": [
+            "veg",
+            "vegan",
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Indian baby egg plant cooked in spicy tangy sauce with sesame oil — a Chettinadu speciality."
+        },
+        {
+          "name": "Mutter Paneer",
+          "price": 15,
+          "tags": [
+            "veg",
+            "gf"
+          ],
+          "heat": 1,
+          "desc": "Cottage cheese cubes and green peas cooked in flavourful creamy curry sauce."
+        },
+        {
+          "name": "Dal Makhni",
+          "price": 14,
+          "tags": [
+            "veg",
+            "gf"
+          ],
+          "desc": "Favourite selection of lentils cooked in butter and tomato gravy."
+        },
+        {
+          "name": "Dal Fry",
+          "price": 14,
+          "note": "Lentils",
+          "tags": [
+            "veg",
+            "gf"
+          ],
+          "heat": 1,
+          "desc": "Yellow lentil cooked and tempered with South Indian seasoning."
+        },
+        {
+          "name": "Channa Masala",
+          "price": 14,
+          "tags": [
+            "veg",
+            "vegan",
+            "gf"
+          ],
+          "heat": 1,
+          "desc": "Boiled garbanzo beans cooked in a mild, tangy flavoured tomato sauce."
+        },
+        {
+          "name": "Palak Paneer",
+          "price": 15,
+          "tags": [
+            "veg",
+            "gf"
+          ],
+          "desc": "Cottage cheese cooked in a spinach based creamy sauce."
+        },
+        {
+          "name": "Paneer Kurchan",
+          "price": 15,
+          "tags": [
+            "veg",
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Paneer and bell pepper tossed in a kadai masala."
+        }
+      ]
+    },
+    {
+      "id": "chicken",
+      "name": "Chicken",
+      "tamil": "கோழி",
+      "blurb": "All curries are served with premium quality rice.",
+      "items": [
+        {
+          "name": "Chicken Curry",
+          "price": 16,
+          "note": "Also Chicken Chettinadu | Chicken Khorma | Saag Chicken | Chicken Vindaloo",
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "The house curries, cooked to order in five styles."
+        },
+        {
+          "name": "Pallipalayam Chicken",
+          "price": 18,
+          "tags": [
+            "gf",
+            "chef"
+          ],
+          "heat": 3,
+          "desc": "Tender country chicken pieces cooked with onions, garlic, and a blend of regional spices and sliced coconut."
+        },
+        {
+          "name": "Cindamani Chicken",
+          "price": 18,
+          "tags": [
+            "gf"
+          ],
+          "heat": 3,
+          "desc": "Chicken cooked in a rich infused red chilli and aromatic spices."
+        },
+        {
+          "name": "Kozhi Varutha Curry",
+          "price": 18,
+          "note": "Chukka style",
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Tender chicken pieces simmered in a savoury blend of spices and herbs."
+        },
+        {
+          "name": "Butter Chicken",
+          "price": 17,
+          "tags": [
+            "gf",
+            "popular"
+          ],
+          "heat": 1,
+          "desc": "Boneless tandoori chicken sautéed in flavourful buttery tomato sauce."
+        },
+        {
+          "name": "Poricha Kozhi",
+          "price": 17,
+          "note": "TN 74",
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Thigh meat deboned, spiced and shallow fried in a najil style."
+        }
+      ]
+    },
+    {
+      "id": "lamb",
+      "name": "Lamb & Goat",
+      "tamil": "ஆட்டிறைச்சி",
+      "blurb": "All curries are served with premium quality rice.",
+      "items": [
+        {
+          "name": "Lamb Curry",
+          "price": 17.5,
+          "note": "Also Lamb Saag | Lamb Vindaloo | Lamb Khorma",
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "The house lamb curries, cooked to order in four styles."
+        },
+        {
+          "name": "Lamb Chettinad",
+          "price": 18,
+          "tags": [
+            "gf",
+            "popular"
+          ],
+          "heat": 3,
+          "desc": "Stone-ground Chettinad masala, cooked down slow."
+        },
+        {
+          "name": "Lamb Chukka Masala",
+          "price": 19,
+          "tags": [
+            "gf",
+            "chef"
+          ],
+          "heat": 3,
+          "desc": "Lamb dish with succulent pieces cooked in aromatic south Indian masala with crispy texture."
+        },
+        {
+          "name": "Goat Curry Bone In",
+          "price": 18,
+          "note": "Also Goat Pepper Fry",
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Karaikudi style bone goat curry."
+        }
+      ]
+    },
+    {
+      "id": "fish",
+      "name": "Fish from the Thawa",
+      "tamil": "மீன்",
+      "blurb": "Coromandel and Andhra coast — tamarind, black pepper and the dry-fried thawa.",
+      "items": [
+        {
+          "name": "Chettinadu Fish Curry",
+          "price": 17,
+          "tags": [
+            "gf",
+            "popular"
+          ],
+          "heat": 3,
+          "desc": "Boneless fish cooked on authentic ancient style of spice blends, with a touch of coconut milk."
+        },
+        {
+          "name": "Cheppala Pulusu",
+          "price": 17,
+          "tags": [
+            "gf"
+          ],
+          "heat": 3,
+          "desc": "A tangy and spicy Andhra fish curry."
+        },
+        {
+          "name": "Shrimp Pulusu",
+          "price": 18,
+          "tags": [
+            "gf"
+          ],
+          "heat": 3,
+          "desc": "A tangy and flavourful Andhra dish."
+        },
+        {
+          "name": "Vanjaram Meen Varuval",
+          "price": 17,
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Fried king fish steak marinated in south Indian spices."
+        },
+        {
+          "name": "Pomfret Fry",
+          "price": 21,
+          "tags": [
+            "gf",
+            "chef"
+          ],
+          "heat": 2,
+          "desc": "Whole pomfret marinated in spices and crispy fried."
+        },
+        {
+          "name": "Calamari Perattal",
+          "price": 16,
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Spiced calamari (squid) cooked in shallow fat."
+        },
+        {
+          "name": "Nethilli Meen Perattal",
+          "price": 17,
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Anchovies (nethilli meen) cooked in a dry preparation with a medley of spices."
+        },
+        {
+          "name": "Sardin Perattal",
+          "price": 16,
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Sardines cooked in a dry style with aromatic spices."
+        },
+        {
+          "name": "Yera Varuval",
+          "price": 19,
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Shrimp (yera) marinated with spices and pan-fried to perfection, resulting in a flavourful and crispy seafood delicacy."
+        },
+        {
+          "name": "Nandu Thokku",
+          "price": 25,
+          "note": "Crab",
+          "tags": [
+            "gf"
+          ],
+          "heat": 3,
+          "desc": "Crab (nandu) cooked in a rich and aromatic soggy masala."
+        },
+        {
+          "name": "Nandu Pepper Fry",
+          "price": 25,
+          "note": "Crab",
+          "tags": [
+            "gf",
+            "chef",
+            "popular"
+          ],
+          "heat": 3,
+          "desc": "Crab pieces marinated and sautéed with a generous amount of black pepper."
+        }
+      ]
+    },
+    {
+      "id": "clay-pot",
+      "name": "From the Clay Pot",
+      "tamil": "மண் பானை",
+      "blurb": "Marinated overnight, cooked against the wall of the pot.",
+      "items": [
+        {
+          "name": "Paneer Tikka",
+          "price": 16,
+          "tags": [
+            "veg",
+            "gf",
+            "popular"
+          ],
+          "heat": 1,
+          "desc": "Marinated cottage cheese cubes grilled in the clay pots."
+        },
+        {
+          "name": "Chicken Tikka",
+          "price": 17,
+          "tags": [
+            "gf"
+          ],
+          "heat": 1,
+          "desc": "Chicken breast tender, flavourful, and grilled in a clay pot."
+        },
+        {
+          "name": "Hariyali Kebab",
+          "price": 17,
+          "tags": [
+            "gf"
+          ],
+          "heat": 1,
+          "desc": "Chicken breast marinated with fresh green herbs and grilled in clay pot."
+        },
+        {
+          "name": "Seekh Kebab",
+          "price": 18,
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Handcrafted perfection meets smoky flavours in a clay pot."
+        },
+        {
+          "name": "Tandoori Prawns",
+          "price": 19,
+          "tags": [
+            "gf"
+          ],
+          "heat": 2,
+          "desc": "Prawns marinated in spiced yoghurt marination and cooked in a clay pot."
+        }
+      ]
+    },
+    {
+      "id": "breads",
+      "name": "Breads",
+      "tamil": "ரொட்டி",
+      "blurb": "Slapped, layered and shredded at the pass. Listen for the kothu parotta.",
+      "items": [
+        {
+          "name": "Naan",
+          "price": 2.5,
+          "tags": [
+            "veg"
+          ]
+        },
+        {
+          "name": "Garlic Naan",
+          "price": 2.5,
+          "tags": [
+            "veg"
+          ]
+        },
+        {
+          "name": "Kashmiri Naan",
+          "price": 5,
+          "tags": [
+            "veg",
+            "nuts"
+          ],
+          "desc": "Naan stuffed with sultanas, almonds, cashews, sprinkled with sweet spices."
+        },
+        {
+          "name": "Bun Parotta",
+          "price": 2.5,
+          "note": "Also Veechu Parotta | Regular Parotta",
+          "tags": [
+            "veg"
+          ]
+        },
+        {
+          "name": "Chapatti",
+          "price": 2.5,
+          "tags": [
+            "veg",
+            "vegan"
+          ]
+        },
+        {
+          "name": "Buhari Wheat Parotta",
+          "price": 5,
+          "tags": [
+            "veg"
+          ]
+        },
+        {
+          "name": "Bread Basket",
+          "price": 13,
+          "tags": [
+            "veg"
+          ],
+          "desc": "Naan, garlic naan, 2 bun parotta and 2 chapatti."
+        },
+        {
+          "name": "Kothu Parotta",
+          "price": 14,
+          "note": "Veg or Egg",
+          "tags": [
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Chopped parotta hammered in a tawa with spices."
+        },
+        {
+          "name": "Kothu Parotta",
+          "price": 15,
+          "note": "Chicken or Lamb",
+          "tags": [
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Chopped parotta hammered in a tawa with spices."
+        }
+      ]
+    },
+    {
+      "id": "indo-chinese",
+      "name": "Indo Chinese",
+      "tamil": "இண்டோ சைனீஸ்",
+      "blurb": "The wok side of the kitchen. Madras street Chinese — loud, glossy and garlicky.",
+      "items": [
+        {
+          "name": "Gobi Manchurian",
+          "price": 13,
+          "tags": [
+            "veg",
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Fried cauliflower sautéed with chilli, garlic, ginger and soy sauce."
+        },
+        {
+          "name": "Chilli Chicken",
+          "price": 15,
+          "heat": 3,
+          "desc": "Battered braised chicken pieces simmered in hot sauce with seasoned bell pepper and green onion."
+        },
+        {
+          "name": "Veg Fried Rice",
+          "price": 15,
+          "priceText": "15 / 15 / 16 / 17",
+          "note": "Veg / Egg / Chicken / Shrimp",
+          "tags": [
+            "veg"
+          ],
+          "heat": 1,
+          "desc": "Mildly seasoned rice, sautéed vegetables and green onion with soy sauce."
+        },
+        {
+          "name": "Schezwan Chicken Fried Rice",
+          "price": 16,
+          "heat": 3,
+          "desc": "Wok rice turned up with house schezwan paste."
+        },
+        {
+          "name": "Chopsuey",
+          "price": 18,
+          "note": "Singapore dish",
+          "heat": 2,
+          "desc": "Sliced chicken cooked in a Singapore style sauce tossed with fried noodle."
+        }
+      ]
+    },
+    {
+      "id": "samplers",
+      "name": "Samplers",
+      "tamil": "சுவை தட்டு",
+      "blurb": "For the table, or for anyone who can't choose.",
+      "items": [
+        {
+          "name": "Vegetable Sampler",
+          "price": 19,
+          "tags": [
+            "veg"
+          ],
+          "desc": "Samosa, methu vada, chilly bhaji and veg pakora."
+        },
+        {
+          "name": "Meat Sampler",
+          "price": 35,
+          "tags": [
+            "popular"
+          ],
+          "heat": 2,
+          "desc": "Chicken grill, chicken tikka, kola urundai and tandoori shrimp, served with salad."
+        },
+        {
+          "name": "Seafood Sampler",
+          "price": 45,
+          "tags": [
+            "chef"
+          ],
+          "heat": 2,
+          "desc": "Anchovies, pomfret, tandoori shrimp, calamari and vanjeeram."
+        }
+      ]
+    },
+    {
+      "id": "kids",
+      "name": "Kids Special",
+      "tamil": "குழந்தைகள்",
+      "blurb": "Small plates for small people.",
+      "items": [
+        {
+          "name": "Kids Special",
+          "price": 6,
+          "note": "Chocolate Dosa | Cheese Dosa | Cone Dosa | Chicken 65",
+          "desc": "Pick one."
+        }
+      ]
+    },
+    {
+      "id": "dessert",
+      "name": "Dessert",
+      "tamil": "இனிப்பு",
+      "blurb": "Where Madras meets Canada.",
+      "items": [
+        {
+          "name": "Individually Baked Mango Pie",
+          "price": 9,
+          "tags": [
+            "veg",
+            "nuts"
+          ],
+          "desc": "Hand folded pastry, toasted almonds."
+        },
+        {
+          "name": "Canadian Maple Ice Cream",
+          "price": 3,
+          "tags": [
+            "veg",
+            "gf"
+          ]
+        },
+        {
+          "name": "Kulfi",
+          "price": 5,
+          "note": "Malai | Paan | Mango | Pistachio",
+          "tags": [
+            "veg",
+            "gf",
+            "nuts"
+          ]
+        },
+        {
+          "name": "Mango Mousse",
+          "price": 4,
+          "tags": [
+            "veg",
+            "gf"
+          ]
+        },
+        {
+          "name": "Jackfruit Cheese Cake",
+          "price": 9,
+          "tags": [
+            "veg"
+          ],
+          "desc": "Fresh jackfruit compote and whipped cream."
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "name": "Drinks",
+      "tamil": "பானங்கள்",
+      "blurb": "Pulled high between two tumblers, the way it's meant to be.",
+      "items": [
+        {
+          "name": "Masala Chai",
+          "price": 3,
+          "tags": [
+            "veg",
+            "gf"
+          ]
+        },
+        {
+          "name": "Madras Filter Coffee",
+          "price": 3,
+          "tags": [
+            "veg",
+            "gf",
+            "popular"
+          ],
+          "desc": "Chicory-blend decoction, pulled long in steel."
+        },
+        {
+          "name": "Mango Lassi",
+          "price": 5,
+          "tags": [
+            "veg",
+            "gf"
+          ]
+        },
+        {
+          "name": "Chilly Guava Sprite",
+          "price": 4,
+          "tags": [
+            "veg",
+            "vegan",
+            "gf"
+          ]
+        },
+        {
+          "name": "Kulukki Sarbath",
+          "price": 6,
+          "note": "Black Currant | Pineapple | Guava | Blueberry",
+          "tags": [
+            "veg",
+            "vegan",
+            "gf"
+          ]
+        },
+        {
+          "name": "Lemon Soda",
+          "price": 5,
+          "tags": [
+            "veg",
+            "vegan",
+            "gf"
+          ]
+        },
+        {
+          "name": "Rose Milk",
+          "price": 4,
+          "tags": [
+            "veg",
+            "gf"
+          ]
+        },
+        {
+          "name": "Neer More",
+          "price": 4,
+          "note": "Spiced buttermilk",
+          "tags": [
+            "veg",
+            "gf"
+          ]
+        }
+      ]
+    }
+  ]
+}
