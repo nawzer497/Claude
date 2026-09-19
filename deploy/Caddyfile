@@ -1,0 +1,22 @@
+# Caddy gets you HTTPS automatically — it obtains and renews the certificate
+# on its own. Point the domain's DNS at this machine first, then:
+#   caddy run --config deploy/Caddyfile
+#
+# Replace the domain below with the real one.
+
+themadrasdiaries.ca, www.themadrasdiaries.ca {
+	encode gzip zstd
+
+	# The app serves both the public site and the admin.
+	reverse_proxy localhost:3000
+
+	# Uploaded media and the JSON are served by the app, but these can be
+	# cached hard because the admin writes new filenames rather than
+	# overwriting existing ones.
+	@media path /content/media/*
+	header @media Cache-Control "public, max-age=2592000"
+
+	# Keep the admin out of search results even if it is ever linked.
+	@admin path /admin.html
+	header @admin X-Robots-Tag "noindex, nofollow"
+}

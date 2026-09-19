@@ -26,6 +26,10 @@ const CONTENT = path.join(ROOT, "content");
 const MEDIA = path.join(CONTENT, "media");
 const AUTH_FILE = path.join(CONTENT, ".auth.json");
 const PORT = process.env.PORT || 3000;
+/* Set TRUST_PROXY=1 when something terminates TLS in front of this (Caddy,
+   nginx, Render, Railway, Cloudflare). Off by default: trusting the header
+   unconditionally would let anyone spoof their address past the rate limit. */
+const TRUST_PROXY = process.env.TRUST_PROXY === "1";
 
 /* Which JSON files the admin is allowed to read and write. Anything not on
    this list is rejected, so a crafted name can't reach another file. */
@@ -91,6 +95,14 @@ function validSession(req) {
   if (!s) return false;
   if (Date.now() - s.created > SESSION_MS) { sessions.delete(m[1]); return false; }
   return m[1];
+}
+
+function clientIp(req) {
+  if (TRUST_PROXY) {
+    const fwd = req.headers["x-forwarded-for"];
+    if (fwd) return String(fwd).split(",")[0].trim();
+  }
+  return req.socket.remoteAddress || "?";
 }
 
 /* Throttle login attempts so the password can't be guessed at speed. */
@@ -162,7 +174,7 @@ async function saveMedia(body, contentType, filename) {
 /* ----------------------------------------------------------------- routes */
 
 async function handleApi(req, res, url) {
-  const ip = req.socket.remoteAddress || "?";
+  const ip = clientIp(req);
 
   if (url.pathname === "/api/login" && req.method === "POST") {
     if (rateLimited(ip)) return json(res, 429, { error: "Too many attempts. Try again in 15 minutes." });
@@ -297,8 +309,23 @@ async function main() {
   }
 
   if (!(await readAuth())) {
-    console.log("\n  No admin password set yet. Run this first:");
-    console.log("    node server.js --set-password 'your-password'\n");
+    if (process.env.ADMIN_PASSWORD) {
+      try {
+        await setPassword(process.env.ADMIN_PASSWORD);
+        console.log("  Admin password set from ADMIN_PASSWORD.");
+      } catch (e) {
+        console.error("  ADMIN_PASSWORD rejected: " + e.message);
+      }
+    } else {
+      console.log("\n  No admin password set yet. Either run:");
+      console.log("    node server.js --set-password 'your-password'");
+      console.log("  or start the server with ADMIN_PASSWORD set.\n");
+    }
+  }
+
+  if (!TRUST_PROXY && process.env.NODE_ENV === "production") {
+    console.log("  Note: behind a proxy? Set TRUST_PROXY=1 so login rate\n" +
+                "  limiting sees real visitor addresses.\n");
   }
 
   server.listen(PORT, () => {

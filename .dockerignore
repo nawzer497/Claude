@@ -1,0 +1,6 @@
+.git
+node_modules
+*.log
+content/.auth.json
+content/*.bak
+content/*.tmp

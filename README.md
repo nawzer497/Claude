@@ -252,18 +252,93 @@ Visible in the screenshots of the live site:
 - **No mobile quick actions** — this build has a sticky Book / Deals /
   Directions / Call bar.
 
-## Deploying
+## Hosting it
 
-It's static files, so anything will host it:
+The site is two halves, and they have different needs:
 
-- **Netlify / Cloudflare Pages / Vercel** — drag the folder in, or connect this
-  repo. Free tier is plenty.
-- **Any web host** — upload the folder to the web root over FTP.
+- **The public pages** are plain files. Any host serves them.
+- **The admin** needs Node running with a **disk it can write to**, because
+  saving edits means writing `content/*.json` and uploaded media.
 
-The current site runs on WordPress. If you want to stay on WordPress, this same
-HTML and CSS converts into a theme — the markup is clean and the content is
-already separated into data files, which map onto custom post types for menu
-items and deals.
+So the question is whether you want the admin to work on the live site.
+
+### Option A — a small VPS (recommended)
+
+Full control, a real disk, and the cheapest option that does everything.
+Hetzner, DigitalOcean, Vultr, Linode — about $5/month.
+
+```bash
+# on the server, as a non-root user
+git clone <this repo> /srv/madras && cd /srv/madras
+node server.js --set-password 'pick-a-strong-one'
+
+sudo cp deploy/madras.service /etc/systemd/system/
+sudo systemctl enable --now madras         # keeps it running and restarts it
+```
+
+Then put Caddy in front for automatic HTTPS — `deploy/Caddyfile` is ready,
+just change the domain:
+
+```bash
+sudo caddy run --config /srv/madras/deploy/Caddyfile
+```
+
+Caddy obtains and renews the certificate itself. Nothing else to configure.
+
+### Option B — a platform host (Render, Railway, Fly)
+
+Easiest if you'd rather not touch a server. Connect the repo; `package.json`
+tells them to run `node server.js`, and HTTPS is handled for you.
+
+**You must attach a persistent disk mounted at `/app/content`.** Without one
+the filesystem is wiped on every deploy and restart, and every edit made in
+the admin disappears. This is the single most common way to lose your work —
+on Render it's a "Disk", on Railway a "Volume", on Fly a "Volume".
+
+Set these environment variables:
+
+| Variable | Value | Why |
+|---|---|---|
+| `ADMIN_PASSWORD` | your password | Sets the password on first boot, since you may have no shell. Ignored once a password exists. |
+| `TRUST_PROXY` | `1` | So login rate limiting sees real visitor addresses, not the platform's proxy. |
+| `NODE_ENV` | `production` | |
+
+Run a **single instance**. Sessions are held in memory, so with two instances
+you'd be signed out at random as requests bounce between them.
+
+There's a `Dockerfile` if the host prefers containers.
+
+### Option C — your existing hosting
+
+The site currently runs on WordPress, so you already pay someone. Many shared
+hosts (anything with cPanel) have a **"Setup Node.js App"** tool that runs this
+perfectly — point it at the folder, set the startup file to `server.js`, and
+add the environment variables above. Worth asking your host before paying for
+anything new.
+
+### Option D — static only, no admin
+
+Netlify, Cloudflare Pages, GitHub Pages, or plain FTP to any web host. Free,
+fast, nothing to maintain. Upload the whole folder.
+
+Everything a visitor sees works, because `content/*.json` are just files the
+page fetches. **The admin won't save**, though — there's no server to write
+the files. To change something you'd edit the JSON and re-upload it.
+
+A reasonable middle path: host the public site statically, and run the admin
+on your own machine (`node server.js`) when you want to make changes, then
+upload the updated `content/` folder.
+
+### Whichever you choose
+
+- **Use HTTPS.** Without it the admin password crosses the network in clear
+  text. Options A–C all give you it.
+- **Back up `content/`.** It is the whole site's content. A nightly copy of
+  that one folder is a complete backup.
+- **`content/.auth.json` is deliberately not in git.** A fresh deploy has no
+  password until you set one, by command or `ADMIN_PASSWORD`.
+- **Point the domain at it last**, once you've checked the site and signed
+  into the admin on the host's temporary URL.
 
 ### Recommended follow-ups
 

@@ -1,0 +1,33 @@
+# systemd unit for a plain VPS (Ubuntu, Debian, etc.)
+#
+#   sudo cp deploy/madras.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now madras
+#   sudo journalctl -u madras -f      # logs
+#
+# Adjust User and WorkingDirectory to match where you put the files.
+
+[Unit]
+Description=The Madras Diaries website
+After=network.target
+
+[Service]
+Type=simple
+User=madras
+WorkingDirectory=/srv/madras
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=TRUST_PROXY=1
+
+# Only content/ needs to be writable.
+ProtectSystem=strict
+ReadWritePaths=/srv/madras/content
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
